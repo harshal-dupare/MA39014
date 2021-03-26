@@ -1,0 +1,95 @@
+4
+2
+3 3 2 1
+2 2 5 1 12
+3 3 4 0 11
+
+
+
+_________________________________________________________________________________________________________
+
+OUTPUT:
+
+C:\Users\harshal d\Desktop\OR LAB>py 18MA20015_LAB_7.py
+
+
+X_B : [12. 11.]
+
+B :
+[[1. 0.]
+ [0. 1.]]
+
+C_b for the basic varaibles: [0. 0.]
+
+B_inverse :
+[[1. 0.]
+ [0. 1.]]
+
+y = C_b*B_inverse = [0. 0.]
+
+Basic variables: ['x_5', 'x_6']
+Non-Basic variables: ['x_1', 'x_2', 'x_3', 'x_4']
+
+
+Max_j Cj - Zj = 3.0
+
+Entering variable: x_1
+ ||   Initial Table is  ||
+C_b      X_b      x_1      x_2      x_3      x_4      x_5      x_6      b
+0.0      x_5      2.0      2.0      5.0      1.0      1.0      0.0      12.0
+0.0      x_6      3.0      3.0      4.0      0.0      0.0      1.0      11.0
+
+
+||   Iteration number : 1   ||
+
+
+X_B : [4.66666667 3.66666667]
+
+C_b for the basic varaibles: [0. 3.]
+
+B :
+[[1. 2.]
+ [0. 3.]]
+
+B_inverse :
+[[ 1.         -0.66666667]
+ [ 0.          0.33333333]]
+
+y = C_b*B_inverse = [0. 1.]
+
+Basic variables: ['x_5', 'x_1']
+Non-Basic variables: ['x_6', 'x_2', 'x_3', 'x_4']
+
+
+Max_j Cj - Zj = 1.0
+Entering variable: x_4
+
+
+||   Iteration number : 2   ||
+18MA20015_LAB_7.py:146: RuntimeWarning: divide by zero encountered in true_divide
+  arr = np.divide(self.X_B, np.dot(self.B_inv,  self.A_ij[:, start_id]))
+
+
+X_B : [4.66666667 3.66666667]
+
+C_b for the basic varaibles: [1. 3.]
+
+B :
+[[1. 2.]
+ [0. 3.]]
+
+B_inverse :
+[[ 1.         -0.66666667]
+ [ 0.          0.33333333]]
+
+y = C_b*B_inverse = [1.         0.33333333]
+
+Basic variables: ['x_4', 'x_1']
+Non-Basic variables: ['x_6', 'x_2', 'x_3', 'x_5']
+
+
+||   Final solution   ||
+x_4 = 4.666666666666667
+x_1 = 3.6666666666666665
+Z = 15.666666666666668
+

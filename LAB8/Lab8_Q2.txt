@@ -1,0 +1,191 @@
+____________________________________________________________________________________________________________________
+
+
+18MA20015 | Harshal Dupare | Lab 8 | 10-3-2021 |
+
+____________________________________________________________________________________________________________________
+
+
+____________________________________________________________________________________________________________________
+
+Q2
+INPUT:
+-1
+2
+-3 -4
+2
+3 -1 < 12
+3 11 < 66
+0
+
+OUTPUT:
+
+harshald@DESKTOP-D3B1M51:/mnt/c/Users/harshal d/Desktop/OR LAB$ ./a.out
+|| IMPORTANT INSTRUCTIONS ||
+ * Problem must be converted to MINIMIZATION type
+ * All equations must be of type <=
+Enter 1 is its maximization problem if minimization problem then -1:-1
+number of variables:2
+Enter the coefficients of variables in objective
+if cx[i] is coefficient of x_i then give input in format
+cx[1] cx[2] ... cx[n]
+-3 -4
+Enter number of conditions: 2
+For each condition give input of the coefficient of the variables in condition
+ for greater than equal to condition: coeff[i][0] .... coeff[i][number_variable] > val[i]
+ for              equal to condition: coeff[i][0] .... coeff[i][number_variable] = val[i]
+ for    less than equal to condition: coeff[i][0] .... coeff[i][number_variable] < val[i]
+3 -1 < 12
+3 11 < 66
+Minimize         Z = -3x_1 -4x_2 
+Subject to:
+        +3x_1 -1x_2 < 12
+        +3x_1 +11x_2 < 66
+x_1 >= 0,x_2 >= 0,
+
+ ||   Standard Format of Problem is   ||
+[ 3 -1 1 0  | 12 ]
+[ 3 11 0 1  | 66 ]
+         Basic             z           x_1           x_2           s_1           s_2     Solution
+             z             1             3             4             0             0             0
+           s_1             0             3            -1             1             0            12
+           s_2             0             3            11             0             1            66
+
+
+ For finding Initial Continious Solution Use which method, ( try other method if this method fails )?
+ * Input "0" for Simplex
+ * Input "1" for Dual Simplex
+ Input:0
+Entering Variable at 1 iteration is x_2
+Leaving Variable at 1 iteration is s_2
+
+After 1th interation the table is:
+         Basic             z           x_1           x_2           s_1           s_2     Solution
+             z             1       1.90909             0             0     -0.363636           -24
+           s_1             0       3.27273             0             1     0.0909091            18
+           x_2             0      0.272727             1             0     0.0909091             6
+Non Basic Variables Are :x_2, s_1, 
+Basic Variables Are :x_1, s_2, 
+Entering Variable at 2 iteration is x_1
+Leaving Variable at 2 iteration is s_1
+
+After 2th interation the table is:
+         Basic             z           x_1           x_2           s_1           s_2     Solution
+             z             1             0             0     -0.583333     -0.416667         -34.5
+           x_1             0             1             0      0.305556     0.0277778           5.5
+           x_2             0             0             1    -0.0833333     0.0833333           4.5
+Non Basic Variables Are :x_1, x_2, 
+Basic Variables Are :s_1, s_2, 
+Coudn't find entering variable, Simplex iteration completed
+
+
+ After finding the initial continios solution
+         Basic             z           x_1           x_2           s_1           s_2     Solution
+             z             1             0             0     -0.583333     -0.416667         -34.5
+           x_1             0             1             0      0.305556     0.0277778           5.5
+           x_2             0             0             1    -0.0833333     0.0833333           4.5
+adding new cutting plane
+         Basic             z           x_1           x_2           s_1           s_2           s_3     Solution
+             z             1             0             0     -0.583333     -0.416667             0         -34.5
+           x_1             0             1             0      0.305556     0.0277778             0           5.5
+           x_2             0             0             1    -0.0833333     0.0833333             0           4.5
+           s_3            -0            -0            -0     -0.305556    -0.0277778             1          -0.5
+Leaving Variable at 1 iteration is s_3
+Entering Variable at 1 iteration is 3
+
+After 1th interation the table is:
+         Basic             z           x_1           x_2           s_1           s_2           s_3     Solution
+             z             1             0             0             0     -0.363636      -1.90909      -33.5455
+           x_1             0             1             0             0             0             1             5
+           x_2             0             0             1             0     0.0909091     -0.272727       4.63636
+           s_1             0             0             0             1     0.0909091      -3.27273       1.63636
+Non Basic Variables Are :x_1, x_2, s_1, 
+Basic Variables Are :s_2, s_3, 
+Coudn't find leaving variable, Simplex iteration completed
+
+after fraction removal
+         Basic             z           x_1           x_2           s_1           s_2           s_3     Solution
+             z             1             0             0             0     -0.363636      -1.90909      -33.5455
+           x_1             0             1             0             0             0             1             5
+           x_2             0             0             1             0     0.0909091     -0.272727       4.63636
+           s_1             0             0             0             1     0.0909091      -3.27273       1.63636
+adding new cutting plane
+         Basic             z           x_1           x_2           s_1           s_2           s_3           s_4     Solution
+             z             1             0             0             0     -0.363636      -1.90909             0      -33.5455
+           x_1             0             1             0             0             0             1             0             5
+           x_2             0             0             1             0     0.0909091     -0.272727             0       4.63636
+           s_1             0             0             0             1     0.0909091      -3.27273             0       1.63636
+           s_4            -0            -0            -0            -0    -0.0909091     -0.727273             1     -0.636364
+Leaving Variable at 1 iteration is s_4
+Entering Variable at 1 iteration is 5
+
+After 1th interation the table is:
+         Basic             z           x_1           x_2           s_1           s_2           s_3           s_4     Solution
+             z             1             0             0             0        -0.125             0        -2.625       -31.875
+           x_1             0             1             0             0        -0.125             0         1.375         4.125
+           x_2             0             0             1             0         0.125             0        -0.375         4.875
+           s_1             0             0             0             1           0.5             0          -4.5           4.5
+           s_3             0             0             0             0         0.125             1        -1.375         0.875
+Non Basic Variables Are :x_1, x_2, s_1, s_3, 
+Basic Variables Are :s_2, s_4, 
+Coudn't find leaving variable, Simplex iteration completed
+
+after fraction removal
+         Basic             z           x_1           x_2           s_1           s_2           s_3           s_4     Solution
+             z             1             0             0             0        -0.125             0        -2.625       -31.875
+           x_1             0             1             0             0        -0.125             0         1.375         4.125
+           x_2             0             0             1             0         0.125             0        -0.375         4.875
+           s_1             0             0             0             1           0.5             0          -4.5           4.5
+           s_3             0             0             0             0         0.125             1        -1.375         0.875
+adding new cutting plane
+         Basic             z           x_1           x_2           s_1           s_2           s_3           s_4           s_5     Solution
+             z             1             0             0             0        -0.125             0        -2.625             0       -31.875
+           x_1             0             1             0             0        -0.125             0         1.375             0         4.125
+           x_2             0             0             1             0         0.125             0        -0.375             0         4.875
+           s_1             0             0             0             1           0.5             0          -4.5             0           4.5
+           s_3             0             0             0             0         0.125             1        -1.375             0         0.875
+           s_5            -0            -0            -0            -0        -0.125            -0        -0.625             1        -0.875
+Leaving Variable at 1 iteration is s_5
+Entering Variable at 1 iteration is 4
+
+After 1th interation the table is:
+         Basic             z           x_1           x_2           s_1           s_2           s_3           s_4           s_5     Solution
+             z             1             0             0             0             0             0            -2            -1           -31
+           x_1             0             1             0             0             0             0             2            -1             5
+           x_2             0             0             1             0             0             0            -1             1             4
+           s_1             0             0             0             1             0             0            -7             4             1
+           s_3             0             0             0             0             0             1            -2             1             0
+           s_2             0             0             0             0             1             0             5            -8             7
+Non Basic Variables Are :x_1, x_2, s_1, s_2, s_3, 
+Basic Variables Are :s_4, s_5, 
+Coudn't find leaving variable, Simplex iteration completed
+
+after fraction removal
+         Basic             z           x_1           x_2           s_1           s_2           s_3           s_4           s_5     Solution
+             z             1             0             0             0             0             0            -2            -1           -31
+           x_1             0             1             0             0             0             0             2            -1             5
+           x_2             0             0             1             0             0             0            -1             1             4
+           s_1             0             0             0             1             0             0            -7             4             1
+           s_3             0             0             0             0             0             1            -2             1             0
+           s_2             0             0             0             0             1             0             5            -8             7
+
+ Final table is 
+         Basic             z           x_1           x_2           s_1           s_2           s_3           s_4           s_5     Solution
+             z             1             0             0             0             0             0            -2            -1           -31
+           x_1             0             1             0             0             0             0             2            -1             5
+           x_2             0             0             1             0             0             0            -1             1             4
+           s_1             0             0             0             1             0             0            -7             4             1
+           s_3             0             0             0             0             0             1            -2             1             0
+           s_2             0             0             0             0             1             0             5            -8             7
+Final solution is:
+z=-31
+x_1=5
+x_2=4
+s_1=1
+s_2=7
+s_3=0
+s_4=0
+s_5=0
+
+
+hence final optimal value is 31

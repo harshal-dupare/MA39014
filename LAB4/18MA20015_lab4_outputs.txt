@@ -1,0 +1,547 @@
+______________________________________________________________________________________________________________________
+
+
+18MA20015 | Harshal Dupare
+Lab 4 | 3-2-2021
+______________________________________________________________________________________________________________________
+
+1)
+INPUT:
+-1
+3
+2 9 1
+2
+1 4 2 > 5
+3 1 2 > 4
+
+OUTPUT:
+Enter 1 is its maximization problem if minimization problem then -1:-1
+number of variables:3
+Enter the coefficients of variables in objective
+if cx[i] is coefficient of x_i then give input in format
+cx[1] cx[2] ... cx[n]
+2 9 1
+Enter number of conditions: 2
+For each condition give input of the coefficient of the variables in condition
+ for greater than equal to condition: coeff[i][0] .... coeff[i][number_variable] > val[i]
+ for              equal to condition: coeff[i][0] .... coeff[i][number_variable] = val[i]
+ for    less than equal to condition: coeff[i][0] .... coeff[i][number_variable] < val[i]
+1 4 2 > 5
+3 1 2 > 4
+ ||   Standard Format of Problem is  ||
+[ 1 4 2 -1 0 1 0  | 5 ]
+[ 3 1 2 0 -1 0 1  | 4 ]
+Initial Big-M Simplex table is :
+      Basic         z       x_1       x_2       x_3     srp_1     srp_2     art_1     art_2 Solution
+         z         1        -2        -9        -1         0         0      -100      -100         0
+     art_1         0         1         4         2        -1         0         1         0         5
+     art_2         0         3         1         2         0        -1         0         1         4
+
+After making the table consistant:
+     Basic         z       x_1       x_2       x_3     srp_1     srp_2     art_1     art_2 Solution
+         z         1       398       491       399      -100      -100         0         0       900
+     art_1         0         1         4         2        -1         0         1         0         5
+     art_2         0         3         1         2         0        -1         0         1         4
+Entering Variable at 1 iteration is x_2
+Leaving Variable at 1 iteration is art_1
+
+After 1th interation the table is:
+     Basic         z       x_1       x_2       x_3     srp_1     srp_2     art_1     art_2 Solution
+         z         1    275.25         0     153.5     22.75      -100   -122.75         0    286.25
+       x_2         0      0.25         1       0.5     -0.25         0      0.25         0      1.25
+     art_2         0      2.75         0       1.5      0.25        -1     -0.25         1      2.75
+Basic Variables Are :x_2, art_2,
+Non Basic Variables Are :x_1, x_3, srp_1, srp_2, art_1,
+Entering Variable at 2 iteration is x_1
+Leaving Variable at 2 iteration is art_2
+
+After 2th interation the table is:
+     Basic         z       x_1       x_2       x_3     srp_1     srp_2     art_1     art_2 Solution
+         z         1         0         0   3.36364  -2.27273 0.0909091  -97.7273  -100.091        11
+       x_2         0         0         1  0.363636 -0.272727 0.0909091  0.272727-0.0909091         1
+       x_1         0         1         0  0.545455 0.0909091 -0.363636-0.0909091  0.363636         1
+Basic Variables Are :x_1, x_2,
+Non Basic Variables Are :x_3, srp_1, srp_2, art_1, art_2,
+Entering Variable at 3 iteration is x_3
+Leaving Variable at 3 iteration is x_1
+
+After 3th interation the table is:
+     Basic         z       x_1       x_2       x_3     srp_1     srp_2     art_1     art_2 Solution
+         z         1  -6.16667         0         0  -2.83333   2.33333  -97.1667  -102.333   4.83333
+       x_2         0 -0.666667         1         0 -0.333333  0.333333  0.333333 -0.333333  0.333333
+       x_3         0   1.83333         0         1  0.166667 -0.666667 -0.166667  0.666667   1.83333
+Basic Variables Are :x_2, x_3,
+Non Basic Variables Are :x_1, srp_1, srp_2, art_1, art_2,
+Entering Variable at 4 iteration is srp_2
+Leaving Variable at 4 iteration is x_2
+
+After 4th interation the table is:
+     Basic         z       x_1       x_2       x_3     srp_1     srp_2     art_1     art_2 Solution
+         z         1      -1.5        -7         0      -0.5         0     -99.5      -100       2.5
+     srp_2         0        -2         3         0        -1         1         1        -1         1
+       x_3         0       0.5         2         1      -0.5         0       0.5         0       2.5
+Basic Variables Are :x_3, srp_2,
+Non Basic Variables Are :x_1, x_2, srp_1, art_1, art_2,
+Coudn't find entering variable, Simplex iteration completed
+
+     Basic         z       x_1       x_2       x_3     srp_1     srp_2     art_1     art_2 Solution
+         z         1      -1.5        -7         0      -0.5         0     -99.5      -100       2.5
+     srp_2         0        -2         3         0        -1         1         1        -1         1
+       x_3         0       0.5         2         1      -0.5         0       0.5         0       2.5
+Final solution is:
+z=2.5
+x_1=0
+x_2=0
+x_3=2.5
+srp_1=0
+srp_2=1
+art_1=0
+art_2=0
+
+______________________________________________________________________________________________________________________
+
+2)
+INPUT:
+-1
+2
+4 2
+3
+3 1 > 27
+1 1 > 21
+1 2 > 30
+
+
+OUTPUT:
+Enter 1 is its maximization problem if minimization problem then -1:-1
+number of variables:2
+Enter the coefficients of variables in objective
+if cx[i] is coefficient of x_i then give input in format
+cx[1] cx[2] ... cx[n]
+4 2
+Enter number of conditions: 3
+For each condition give input of the coefficient of the variables in condition
+ for greater than equal to condition: coeff[i][0] .... coeff[i][number_variable] > val[i]
+ for              equal to condition: coeff[i][0] .... coeff[i][number_variable] = val[i]
+ for    less than equal to condition: coeff[i][0] .... coeff[i][number_variable] < val[i]
+3 1 > 27
+1 1 > 21
+1 2 > 30
+ ||   Standard Format of Problem is  ||
+[ 3 1 -1 0 0 1 0 0  | 27 ]
+[ 1 1 0 -1 0 0 1 0  | 21 ]
+[ 1 2 0 0 -1 0 0 1  | 30 ]
+Initial Big-M Simplex table is :
+      Basic         z       x_1       x_2     srp_1     srp_2     srp_3     art_1     art_2     art_3 Solution
+         z         1        -4        -2         0         0         0      -100      -100      -100         0
+     art_1         0         3         1        -1         0         0         1         0         0        27
+     art_2         0         1         1         0        -1         0         0         1         0        21
+     art_3         0         1         2         0         0        -1         0         0         1        30
+
+After making the table consistant:
+     Basic         z       x_1       x_2     srp_1     srp_2     srp_3     art_1     art_2     art_3 Solution
+         z         1       496       398      -100      -100      -100         0         0         0      7800
+     art_1         0         3         1        -1         0         0         1         0         0        27
+     art_2         0         1         1         0        -1         0         0         1         0        21
+     art_3         0         1         2         0         0        -1         0         0         1        30
+Entering Variable at 1 iteration is x_1
+Leaving Variable at 1 iteration is art_1
+
+After 1th interation the table is:
+     Basic         z       x_1       x_2     srp_1     srp_2     srp_3     art_1     art_2     art_3 Solution
+         z         1         0   232.667   65.3333      -100      -100  -165.333         0         0      3336
+       x_1         0         1  0.333333 -0.333333         0         0  0.333333         0         0         9
+     art_2         0         0  0.666667  0.333333        -1         0 -0.333333         1         0        12
+     art_3         0         0   1.66667  0.333333         0        -1 -0.333333         0         1        21
+Basic Variables Are :x_1, art_2, art_3,
+Non Basic Variables Are :x_2, srp_1, srp_2, srp_3, art_1,
+Entering Variable at 2 iteration is x_2
+Leaving Variable at 2 iteration is art_3
+
+After 2th interation the table is:
+     Basic         z       x_1       x_2     srp_1     srp_2     srp_3     art_1     art_2     art_3 Solution
+         z         1         0         0      18.8      -100      39.6    -118.8         0    -139.6     404.4
+       x_1         0         1         0      -0.4         0       0.2       0.4         0      -0.2       4.8
+     art_2         0         0         0       0.2        -1       0.4      -0.2         1      -0.4       3.6
+       x_2         0         0         1       0.2         0      -0.6      -0.2         0       0.6      12.6
+Basic Variables Are :x_1, x_2, art_2,
+Non Basic Variables Are :srp_1, srp_2, srp_3, art_1, art_3,
+Entering Variable at 3 iteration is srp_3
+Leaving Variable at 3 iteration is art_2
+
+After 3th interation the table is:
+     Basic         z       x_1       x_2     srp_1     srp_2     srp_3     art_1     art_2     art_3 Solution
+         z         1         0         0        -1        -1         0       -99       -99      -100        48
+       x_1         0         1         0      -0.5       0.5         0       0.5      -0.5         0         3
+     srp_3         0         0         0       0.5      -2.5         1      -0.5       2.5        -1         9
+       x_2         0         0         1       0.5      -1.5         0      -0.5       1.5         0        18
+Basic Variables Are :x_1, x_2, srp_3,
+Non Basic Variables Are :srp_1, srp_2, art_1, art_2, art_3,
+Coudn't find entering variable, Simplex iteration completed
+
+     Basic         z       x_1       x_2     srp_1     srp_2     srp_3     art_1     art_2     art_3 Solution
+         z         1         0         0        -1        -1         0       -99       -99      -100        48
+       x_1         0         1         0      -0.5       0.5         0       0.5      -0.5         0         3
+     srp_3         0         0         0       0.5      -2.5         1      -0.5       2.5        -1         9
+       x_2         0         0         1       0.5      -1.5         0      -0.5       1.5         0        18
+Final solution is:
+z=48
+x_1=3
+x_2=18
+srp_1=0
+srp_2=0
+srp_3=9
+art_1=0
+art_2=0
+art_3=0
+
+
+
+
+______________________________________________________________________________________________________________________
+
+
+3)
+INPUT:
+1
+2
+-2 -1
+3
+3 1 = 3
+4 3 > 6
+1 2 < 4
+
+
+OUTPUT:
+Enter 1 is its maximization problem if minimization problem then -1:1
+number of variables:2
+Enter the coefficients of variables in objective
+if cx[i] is coefficient of x_i then give input in format
+cx[1] cx[2] ... cx[n]
+-2
+-1
+Enter number of conditions: 3
+For each condition give input of the coefficient of the variables in condition
+ for greater than equal to condition: coeff[i][0] .... coeff[i][number_variable] > val[i]
+ for              equal to condition: coeff[i][0] .... coeff[i][number_variable] = val[i]
+ for    less than equal to condition: coeff[i][0] .... coeff[i][number_variable] < val[i]
+3 1 = 3
+4 3 > 6
+1 2 < 4
+ ||   Standard Format of Problem is  ||
+[ 3 1 0 1 0 0  | 3 ]
+[ 4 3 -1 0 1 0  | 6 ]
+[ 1 2 0 0 0 1  | 4 ]
+Initial Big-M Simplex table is :
+      Basic         z       x_1       x_2     srp_1     art_1     art_2       s_1 Solution
+         z         1         2         1         0       100       100         0         0
+     art_1         0         3         1         0         1         0         0         3
+     art_2         0         4         3        -1         0         1         0         6
+       s_1         0         1         2         0         0         0         1         4
+
+After making the table consistant:
+     Basic         z       x_1       x_2     srp_1     art_1     art_2       s_1 Solution
+         z         1      -698      -399       100         0         0         0      -900
+     art_1         0         3         1         0         1         0         0         3
+     art_2         0         4         3        -1         0         1         0         6
+       s_1         0         1         2         0         0         0         1         4
+Entering Variable at 1 iteration is x_1
+Leaving Variable at 1 iteration is art_1
+
+After 1th interation the table is:
+     Basic         z       x_1       x_2     srp_1     art_1     art_2       s_1 Solution
+         z         1         0  -166.333       100   232.667         0         0      -202
+       x_1         0         1  0.333333         0  0.333333         0         0         1
+     art_2         0         0   1.66667        -1  -1.33333         1         0         2
+       s_1         0         0   1.66667         0 -0.333333         0         1         3
+Basic Variables Are :x_1, art_2, s_1,
+Non Basic Variables Are :x_2, srp_1, art_1,
+Entering Variable at 2 iteration is x_2
+Leaving Variable at 2 iteration is art_2
+
+After 2th interation the table is:
+     Basic         z       x_1       x_2     srp_1     art_1     art_2       s_1 Solution
+         z         1         0         0       0.2      99.6      99.8         0      -2.4
+       x_1         0         1         0       0.2       0.6      -0.2         0       0.6
+       x_2         0         0         1      -0.6      -0.8       0.6         0       1.2
+       s_1         0         0         0         1         1        -1         1         1
+Basic Variables Are :x_1, x_2, s_1,
+Non Basic Variables Are :srp_1, art_1, art_2,
+Coudn't find entering variable, Simplex iteration completed
+
+     Basic         z       x_1       x_2     srp_1     art_1     art_2       s_1 Solution
+         z         1         0         0       0.2      99.6      99.8         0      -2.4
+       x_1         0         1         0       0.2       0.6      -0.2         0       0.6
+       x_2         0         0         1      -0.6      -0.8       0.6         0       1.2
+       s_1         0         0         0         1         1        -1         1         1
+Final solution is:
+z=-2.4
+x_1=0.6
+x_2=1.2
+srp_1=0
+art_1=0
+art_2=0
+s_1=1
+
+
+
+
+______________________________________________________________________________________________________________________
+
+
+4)
+INPUT:
+1
+2
+3 -1
+3
+2 1 > 2
+1 3 < 3
+0 1 < 4
+
+
+OUTPUT:
+
+Enter 1 is its maximization problem if minimization problem then -1:1
+number of variables:2
+Enter the coefficients of variables in objective
+if cx[i] is coefficient of x_i then give input in format
+cx[1] cx[2] ... cx[n]
+3 -1
+Enter number of conditions: 3
+For each condition give input of the coefficient of the variables in condition
+ for greater than equal to condition: coeff[i][0] .... coeff[i][number_variable] > val[i]
+ for              equal to condition: coeff[i][0] .... coeff[i][number_variable] = val[i]
+ for    less than equal to condition: coeff[i][0] .... coeff[i][number_variable] < val[i]
+2 1 > 2
+1 3 < 3
+0 1 < 4
+ ||   Standard Format of Problem is  ||
+[ 2 1 -1 1 0 0  | 2 ]
+[ 1 3 0 0 1 0  | 3 ]
+[ 0 1 0 0 0 1  | 4 ]
+Initial Big-M Simplex table is :
+      Basic         z       x_1       x_2     srp_1     art_1       s_1       s_2 Solution
+         z         1        -3         1         0       100         0         0         0
+     art_1         0         2         1        -1         1         0         0         2
+       s_1         0         1         3         0         0         1         0         3
+       s_2         0         0         1         0         0         0         1         4
+
+After making the table consistant:
+     Basic         z       x_1       x_2     srp_1     art_1       s_1       s_2 Solution
+         z         1      -203       -99       100         0         0         0      -200
+     art_1         0         2         1        -1         1         0         0         2
+       s_1         0         1         3         0         0         1         0         3
+       s_2         0         0         1         0         0         0         1         4
+Entering Variable at 1 iteration is x_1
+Leaving Variable at 1 iteration is art_1
+
+After 1th interation the table is:
+     Basic         z       x_1       x_2     srp_1     art_1       s_1       s_2 Solution
+         z         1         0       2.5      -1.5     101.5         0         0         3
+       x_1         0         1       0.5      -0.5       0.5         0         0         1
+       s_1         0         0       2.5       0.5      -0.5         1         0         2
+       s_2         0         0         1         0         0         0         1         4
+Basic Variables Are :x_1, s_1, s_2,
+Non Basic Variables Are :x_2, srp_1, art_1,
+Entering Variable at 2 iteration is srp_1
+Leaving Variable at 2 iteration is s_1
+
+After 2th interation the table is:
+     Basic         z       x_1       x_2     srp_1     art_1       s_1       s_2 Solution
+         z         1         0        10         0       100         3         0         9
+       x_1         0         1         3         0         0         1         0         3
+     srp_1         0         0         5         1        -1         2         0         4
+       s_2         0         0         1         0         0         0         1         4
+Basic Variables Are :x_1, srp_1, s_2,
+Non Basic Variables Are :x_2, art_1, s_1,
+Coudn't find entering variable, Simplex iteration completed
+
+     Basic         z       x_1       x_2     srp_1     art_1       s_1       s_2 Solution
+         z         1         0        10         0       100         3         0         9
+       x_1         0         1         3         0         0         1         0         3
+     srp_1         0         0         5         1        -1         2         0         4
+       s_2         0         0         1         0         0         0         1         4
+Final solution is:
+z=9
+x_1=3
+x_2=0
+srp_1=4
+art_1=0
+s_1=0
+s_2=4
+
+
+______________________________________________________________________________________________________________________
+
+
+5)
+INPUT:
+1
+4
+1 2 3 -1
+3
+1 2 3 0 = 15
+2 1 5 0 = 20
+1 2 1 1 = 10
+
+
+
+OUTPUT:
+Enter 1 is its maximization problem if minimization problem then -1:1
+number of variables:4
+Enter the coefficients of variables in objective
+if cx[i] is coefficient of x_i then give input in format
+cx[1] cx[2] ... cx[n]
+1 2 3 -1
+Enter number of conditions: 3
+For each condition give input of the coefficient of the variables in condition
+ for greater than equal to condition: coeff[i][0] .... coeff[i][number_variable] > val[i]
+ for              equal to condition: coeff[i][0] .... coeff[i][number_variable] = val[i]
+ for    less than equal to condition: coeff[i][0] .... coeff[i][number_variable] < val[i]
+1 2 3 0 = 15
+2 1 5 0 = 20
+1 2 1 1 = 10
+ ||   Standard Format of Problem is  ||
+[ 1 2 3 0 1 0 0  | 15 ]
+[ 2 1 5 0 0 1 0  | 20 ]
+[ 1 2 1 1 0 0 1  | 10 ]
+Initial Big-M Simplex table is :
+      Basic         z       x_1       x_2       x_3       x_4     art_1     art_2     art_3 Solution
+         z         1        -1        -2        -3         1       100       100       100         0
+     art_1         0         1         2         3         0         1         0         0        15
+     art_2         0         2         1         5         0         0         1         0        20
+     art_3         0         1         2         1         1         0         0         1        10
+
+After making the table consistant:
+     Basic         z       x_1       x_2       x_3       x_4     art_1     art_2     art_3 Solution
+         z         1      -401      -502      -903       -99         0         0         0     -4500
+     art_1         0         1         2         3         0         1         0         0        15
+     art_2         0         2         1         5         0         0         1         0        20
+     art_3         0         1         2         1         1         0         0         1        10
+Entering Variable at 1 iteration is x_3
+Leaving Variable at 1 iteration is art_2
+
+After 1th interation the table is:
+     Basic         z       x_1       x_2       x_3       x_4     art_1     art_2     art_3 Solution
+         z         1     -39.8    -321.4         0       -99         0     180.6         0      -888
+     art_1         0      -0.2       1.4         0         0         1      -0.6         0         3
+       x_3         0       0.4       0.2         1         0         0       0.2         0         4
+     art_3         0       0.6       1.8         0         1         0      -0.2         1         6
+Basic Variables Are :x_3, art_1, art_3,
+Non Basic Variables Are :x_1, x_2, x_4, art_2,
+Entering Variable at 2 iteration is x_2
+Leaving Variable at 2 iteration is art_1
+
+After 2th interation the table is:
+     Basic         z       x_1       x_2       x_3       x_4     art_1     art_2     art_3 Solution
+         z         1  -85.7143         0         0       -99   229.571   42.8571         0  -199.286
+       x_2         0 -0.142857         1         0         0  0.714286 -0.428571         0   2.14286
+       x_3         0  0.428571         0         1         0 -0.142857  0.285714         0   3.57143
+     art_3         0  0.857143         0         0         1  -1.28571  0.571429         1   2.14286
+Basic Variables Are :x_2, x_3, art_3,
+Non Basic Variables Are :x_1, x_4, art_1, art_2,
+Entering Variable at 3 iteration is x_4
+Leaving Variable at 3 iteration is art_3
+
+After 3th interation the table is:
+     Basic         z       x_1       x_2       x_3       x_4     art_1     art_2     art_3 Solution
+         z         1 -0.857143         0         0         0   102.286   99.4286        99   12.8571
+       x_2         0 -0.142857         1         0         0  0.714286 -0.428571         0   2.14286
+       x_3         0  0.428571         0         1         0 -0.142857  0.285714         0   3.57143
+       x_4         0  0.857143         0         0         1  -1.28571  0.571429         1   2.14286
+Basic Variables Are :x_2, x_3, x_4,
+Non Basic Variables Are :x_1, art_1, art_2, art_3,
+Entering Variable at 4 iteration is x_1
+Leaving Variable at 4 iteration is x_4
+
+After 4th interation the table is:
+     Basic         z       x_1       x_2       x_3       x_4     art_1     art_2     art_3 Solution
+         z         1         0         0         0         1       101       100       100        15
+       x_2         0         0         1         0  0.166667       0.5 -0.333333  0.166667       2.5
+       x_3         0         0         0         1      -0.5       0.55.55112e-17      -0.5       2.5
+       x_1         0         1         0         0   1.16667      -1.5  0.666667   1.16667       2.5
+Basic Variables Are :x_1, x_2, x_3,
+Non Basic Variables Are :x_4, art_1, art_2, art_3,
+Coudn't find entering variable, Simplex iteration completed
+
+     Basic         z       x_1       x_2       x_3       x_4     art_1     art_2     art_3 Solution
+         z         1         0         0         0         1       101       100       100        15
+       x_2         0         0         1         0  0.166667       0.5 -0.333333  0.166667       2.5
+       x_3         0         0         0         1      -0.5       0.55.55112e-17      -0.5       2.5
+       x_1         0         1         0         0   1.16667      -1.5  0.666667   1.16667       2.5
+Final solution is:
+z=15
+x_1=2.5
+x_2=2.5
+x_3=2.5
+x_4=0
+art_1=0
+art_2=0
+art_3=0
+
+
+______________________________________________________________________________________________________________________
+
+6)
+INPUT:
+1
+3
+-2 1 3
+2
+1 -2 3 = 2
+3 2 4 = 1
+
+
+OUTPUT:
+
+Enter 1 is its maximization problem if minimization problem then -1:1
+number of variables:3
+Enter the coefficients of variables in objective
+if cx[i] is coefficient of x_i then give input in format
+cx[1] cx[2] ... cx[n]
+-2 1 3
+Enter number of conditions: 2
+For each condition give input of the coefficient of the variables in condition
+ for greater than equal to condition: coeff[i][0] .... coeff[i][number_variable] > val[i]
+ for              equal to condition: coeff[i][0] .... coeff[i][number_variable] = val[i]
+ for    less than equal to condition: coeff[i][0] .... coeff[i][number_variable] < val[i]
+1 -2 3 = 2
+3 2 4 = 1
+ ||   Standard Format of Problem is  ||
+[ 1 -2 3 1 0  | 2 ]
+[ 3 2 4 0 1  | 1 ]
+Initial Big-M Simplex table is :
+      Basic         z       x_1       x_2       x_3     art_1     art_2 Solution
+         z         1         2        -1        -3       100       100         0
+     art_1         0         1        -2         3         1         0         2
+     art_2         0         3         2         4         0         1         1
+
+After making the table consistant:
+     Basic         z       x_1       x_2       x_3     art_1     art_2 Solution
+         z         1      -398        -1      -703         0         0      -300
+     art_1         0         1        -2         3         1         0         2
+     art_2         0         3         2         4         0         1         1
+Entering Variable at 1 iteration is x_3
+Leaving Variable at 1 iteration is art_2
+
+After 1th interation the table is:
+     Basic         z       x_1       x_2       x_3     art_1     art_2 Solution
+         z         1    129.25     350.5         0         0    175.75   -124.25
+     art_1         0     -1.25      -3.5         0         1     -0.75      1.25
+       x_3         0      0.75       0.5         1         0      0.25      0.25
+Basic Variables Are :x_3, art_1,
+Non Basic Variables Are :x_1, x_2, art_2,
+Coudn't find entering variable, Simplex iteration completed
+
+     Basic         z       x_1       x_2       x_3     art_1     art_2 Solution
+         z         1    129.25     350.5         0         0    175.75   -124.25
+     art_1         0     -1.25      -3.5         0         1     -0.75      1.25
+       x_3         0      0.75       0.5         1         0      0.25      0.25
+Final solution is:
+Probelem has NO SOLUTION / INFEASIBLE SOLUTION as there is/are artificial variables is in the non basic variables
+
+
+
+
+
+

@@ -1,0 +1,142 @@
+2
+4
+4 3
+2 1 1000
+1 1 800
+1 0 400
+0 1 700
+
+
+
+_________________________________________________________________________________________________________
+
+OUTPUT:
+
+
+C:\Users\harshal d\Desktop\OR LAB>py 18MA20015_LAB_7.py
+
+
+X_B : [1000.  800.  400.  700.]
+
+B :
+[[1. 0. 0. 0.]
+ [0. 1. 0. 0.]
+ [0. 0. 1. 0.]
+ [0. 0. 0. 1.]]
+
+C_b for the basic varaibles: [0. 0. 0. 0.]
+
+B_inverse :
+[[1. 0. 0. 0.]
+ [0. 1. 0. 0.]
+ [0. 0. 1. 0.]
+ [0. 0. 0. 1.]]
+
+y = C_b*B_inverse = [0. 0. 0. 0.]
+
+Basic variables: ['x_3', 'x_4', 'x_5', 'x_6']
+Non-Basic variables: ['x_1', 'x_2']
+
+
+Max_j Cj - Zj = 4.0
+
+Entering variable: x_1
+ ||   Initial Table is  ||
+C_b      X_b      x_1      x_2      x_3      x_4      x_5      x_6      b
+0.0      x_3      2.0      1.0      1.0      0.0      0.0      0.0      1000.0
+0.0      x_4      1.0      1.0      0.0      1.0      0.0      0.0      800.0
+0.0      x_5      1.0      0.0      0.0      0.0      1.0      0.0      400.0
+0.0      x_6      0.0      1.0      0.0      0.0      0.0      1.0      700.0
+
+
+||   Iteration number : 1   ||
+18MA20015_LAB_7.py:146: RuntimeWarning: divide by zero encountered in true_divide
+  arr = np.divide(self.X_B, np.dot(self.B_inv,  self.A_ij[:, start_id]))
+
+
+X_B : [200. 400. 400. 700.]
+
+C_b for the basic varaibles: [0. 0. 4. 0.]
+
+B :
+[[1. 0. 2. 0.]
+ [0. 1. 1. 0.]
+ [0. 0. 1. 0.]
+ [0. 0. 0. 1.]]
+
+B_inverse :
+[[ 1.  0. -2.  0.]
+ [ 0.  1. -1.  0.]
+ [ 0.  0.  1.  0.]
+ [ 0.  0.  0.  1.]]
+
+y = C_b*B_inverse = [0. 0. 4. 0.]
+
+Basic variables: ['x_3', 'x_4', 'x_1', 'x_6']
+Non-Basic variables: ['x_5', 'x_2']
+
+
+Max_j Cj - Zj = 3.0
+Entering variable: x_2
+
+
+||   Iteration number : 2   ||
+
+
+X_B : [200. 200. 400. 500.]
+
+C_b for the basic varaibles: [3. 0. 4. 0.]
+
+B :
+[[1. 0. 2. 0.]
+ [1. 1. 1. 0.]
+ [0. 0. 1. 0.]
+ [1. 0. 0. 1.]]
+
+B_inverse :
+[[ 1.  0. -2.  0.]
+ [-1.  1.  1.  0.]
+ [-0. -0.  1. -0.]
+ [-1.  0.  2.  1.]]
+
+y = C_b*B_inverse = [ 3.  0. -2.  0.]
+
+Basic variables: ['x_2', 'x_4', 'x_1', 'x_6']
+Non-Basic variables: ['x_5', 'x_3']
+
+
+Max_j Cj - Zj = 2.0
+Entering variable: x_5
+
+
+||   Iteration number : 3   ||
+
+
+X_B : [600. 200. 200. 100.]
+
+C_b for the basic varaibles: [3. 0. 4. 0.]
+
+B :
+[[1. 0. 2. 0.]
+ [1. 0. 1. 0.]
+ [0. 1. 1. 0.]
+ [1. 0. 0. 1.]]
+
+B_inverse :
+[[-1.  2.  0.  0.]
+ [-1.  1.  1.  0.]
+ [ 1. -1. -0. -0.]
+ [ 1. -2. -0.  1.]]
+
+y = C_b*B_inverse = [1. 2. 0. 0.]
+
+Basic variables: ['x_2', 'x_5', 'x_1', 'x_6']
+Non-Basic variables: ['x_4', 'x_3']
+
+
+||   Final solution   ||
+x_2 = 600.0
+x_5 = 200.0
+x_1 = 200.0
+x_6 = 100.0
+Z = 2600.0

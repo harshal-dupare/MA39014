@@ -1,0 +1,743 @@
+4
+3
+-3 -3 -2 1
+-2 -2 -5 -1 -43
+-3 3 -4 0 -11
+-4 2 -3 1 -25
+
+
+
+
+_________________________________________________________________________________________________________
+
+OUTPUT:
+
+C:\Users\harshal d\Desktop\OR LAB>py 18MA20015_LAB_7.py
+
+
+X_B : [-43. -11. -25.]
+
+B :
+[[1. 0. 0.]
+ [0. 1. 0.]
+ [0. 0. 1.]]
+
+C_b for the basic varaibles: [0. 0. 0.]
+
+B_inverse :
+[[1. 0. 0.]
+ [0. 1. 0.]
+ [0. 0. 1.]]
+
+y = C_b*B_inverse = [0. 0. 0.]
+
+Basic variables: ['x_5', 'x_6', 'x_7']
+Non-Basic variables: ['x_1', 'x_2', 'x_3', 'x_4']
+
+
+Max_j Cj - Zj = 1.0
+
+Entering variable: x_4
+ ||   Initial Table is  ||
+C_b      X_b      x_1      x_2      x_3      x_4      x_5      x_6      x_7      b
+0.0      x_5      -2.0     -2.0     -5.0     -1.0     1.0      0.0      0.0      -43.0
+0.0      x_6      -3.0     3.0      -4.0     0.0      0.0      1.0      0.0      -11.0
+0.0      x_7      -4.0     2.0      -3.0     1.0      0.0      0.0      1.0      -25.0
+
+
+||   Iteration number : 1   ||
+18MA20015_LAB_7.py:146: RuntimeWarning: divide by zero encountered in true_divide
+  arr = np.divide(self.X_B, np.dot(self.B_inv,  self.A_ij[:, start_id]))
+
+
+X_B : [ 43. -11. -68.]
+
+C_b for the basic varaibles: [1. 0. 0.]
+
+B :
+[[-1.  0.  0.]
+ [ 0.  1.  0.]
+ [ 1.  0.  1.]]
+
+B_inverse :
+[[-1. -0. -0.]
+ [ 0.  1.  0.]
+ [ 1.  0.  1.]]
+
+y = C_b*B_inverse = [-1.  0.  0.]
+
+Basic variables: ['x_4', 'x_6', 'x_7']
+Non-Basic variables: ['x_1', 'x_2', 'x_3', 'x_5']
+
+
+Max_j Cj - Zj = 1.0
+Entering variable: x_5
+
+
+||   Iteration number : 2   ||
+18MA20015_LAB_7.py:154: RuntimeWarning: invalid value encountered in multiply
+  self.X_B = (self.X_B) - minim * np.dot(self.B_inv,  self.A_ij[:, start_id])
+
+
+X_B : [ inf  nan -inf]
+
+C_b for the basic varaibles: [0. 0. 0.]
+
+B :
+[[1. 0. 0.]
+ [0. 1. 0.]
+ [0. 0. 1.]]
+
+B_inverse :
+[[1. 0. 0.]
+ [0. 1. 0.]
+ [0. 0. 1.]]
+
+y = C_b*B_inverse = [0. 0. 0.]
+
+Basic variables: ['x_5', 'x_6', 'x_7']
+Non-Basic variables: ['x_1', 'x_2', 'x_3', 'x_4']
+
+
+Max_j Cj - Zj = 1.0
+Entering variable: x_4
+
+
+||   Iteration number : 3   ||
+18MA20015_LAB_7.py:148: RuntimeWarning: invalid value encountered in greater
+  iter_id = np.where(arr > 0, arr, np.inf).argmin()
+18MA20015_LAB_7.py:149: RuntimeWarning: invalid value encountered in greater
+  minim = np.where(arr > 0, arr, np.inf).min()
+
+
+X_B : [ inf  nan -inf]
+
+C_b for the basic varaibles: [1. 0. 0.]
+
+B :
+[[-1.  0.  0.]
+ [ 0.  1.  0.]
+ [ 1.  0.  1.]]
+
+B_inverse :
+[[-1. -0. -0.]
+ [ 0.  1.  0.]
+ [ 1.  0.  1.]]
+
+y = C_b*B_inverse = [-1.  0.  0.]
+
+Basic variables: ['x_4', 'x_6', 'x_7']
+Non-Basic variables: ['x_1', 'x_2', 'x_3', 'x_5']
+
+
+Max_j Cj - Zj = 1.0
+Entering variable: x_5
+
+
+||   Iteration number : 4   ||
+
+
+X_B : [ inf  nan -inf]
+
+C_b for the basic varaibles: [0. 0. 0.]
+
+B :
+[[1. 0. 0.]
+ [0. 1. 0.]
+ [0. 0. 1.]]
+
+B_inverse :
+[[1. 0. 0.]
+ [0. 1. 0.]
+ [0. 0. 1.]]
+
+y = C_b*B_inverse = [0. 0. 0.]
+
+Basic variables: ['x_5', 'x_6', 'x_7']
+Non-Basic variables: ['x_1', 'x_2', 'x_3', 'x_4']
+
+
+Max_j Cj - Zj = 1.0
+Entering variable: x_4
+
+
+||   Iteration number : 5   ||
+
+
+X_B : [ inf  nan -inf]
+
+C_b for the basic varaibles: [1. 0. 0.]
+
+B :
+[[-1.  0.  0.]
+ [ 0.  1.  0.]
+ [ 1.  0.  1.]]
+
+B_inverse :
+[[-1. -0. -0.]
+ [ 0.  1.  0.]
+ [ 1.  0.  1.]]
+
+y = C_b*B_inverse = [-1.  0.  0.]
+
+Basic variables: ['x_4', 'x_6', 'x_7']
+Non-Basic variables: ['x_1', 'x_2', 'x_3', 'x_5']
+
+
+Max_j Cj - Zj = 1.0
+Entering variable: x_5
+
+
+||   Iteration number : 6   ||
+
+
+X_B : [ inf  nan -inf]
+
+C_b for the basic varaibles: [0. 0. 0.]
+
+B :
+[[1. 0. 0.]
+ [0. 1. 0.]
+ [0. 0. 1.]]
+
+B_inverse :
+[[1. 0. 0.]
+ [0. 1. 0.]
+ [0. 0. 1.]]
+
+y = C_b*B_inverse = [0. 0. 0.]
+
+Basic variables: ['x_5', 'x_6', 'x_7']
+Non-Basic variables: ['x_1', 'x_2', 'x_3', 'x_4']
+
+
+Max_j Cj - Zj = 1.0
+Entering variable: x_4
+
+
+||   Iteration number : 7   ||
+
+
+X_B : [ inf  nan -inf]
+
+C_b for the basic varaibles: [1. 0. 0.]
+
+B :
+[[-1.  0.  0.]
+ [ 0.  1.  0.]
+ [ 1.  0.  1.]]
+
+B_inverse :
+[[-1. -0. -0.]
+ [ 0.  1.  0.]
+ [ 1.  0.  1.]]
+
+y = C_b*B_inverse = [-1.  0.  0.]
+
+Basic variables: ['x_4', 'x_6', 'x_7']
+Non-Basic variables: ['x_1', 'x_2', 'x_3', 'x_5']
+
+
+Max_j Cj - Zj = 1.0
+Entering variable: x_5
+
+
+||   Iteration number : 8   ||
+
+
+X_B : [ inf  nan -inf]
+
+C_b for the basic varaibles: [0. 0. 0.]
+
+B :
+[[1. 0. 0.]
+ [0. 1. 0.]
+ [0. 0. 1.]]
+
+B_inverse :
+[[1. 0. 0.]
+ [0. 1. 0.]
+ [0. 0. 1.]]
+
+y = C_b*B_inverse = [0. 0. 0.]
+
+Basic variables: ['x_5', 'x_6', 'x_7']
+Non-Basic variables: ['x_1', 'x_2', 'x_3', 'x_4']
+
+
+Max_j Cj - Zj = 1.0
+Entering variable: x_4
+
+
+||   Iteration number : 9   ||
+
+
+X_B : [ inf  nan -inf]
+
+C_b for the basic varaibles: [1. 0. 0.]
+
+B :
+[[-1.  0.  0.]
+ [ 0.  1.  0.]
+ [ 1.  0.  1.]]
+
+B_inverse :
+[[-1. -0. -0.]
+ [ 0.  1.  0.]
+ [ 1.  0.  1.]]
+
+y = C_b*B_inverse = [-1.  0.  0.]
+
+Basic variables: ['x_4', 'x_6', 'x_7']
+Non-Basic variables: ['x_1', 'x_2', 'x_3', 'x_5']
+
+
+Max_j Cj - Zj = 1.0
+Entering variable: x_5
+
+
+||   Iteration number : 10   ||
+
+
+X_B : [ inf  nan -inf]
+
+C_b for the basic varaibles: [0. 0. 0.]
+
+B :
+[[1. 0. 0.]
+ [0. 1. 0.]
+ [0. 0. 1.]]
+
+B_inverse :
+[[1. 0. 0.]
+ [0. 1. 0.]
+ [0. 0. 1.]]
+
+y = C_b*B_inverse = [0. 0. 0.]
+
+Basic variables: ['x_5', 'x_6', 'x_7']
+Non-Basic variables: ['x_1', 'x_2', 'x_3', 'x_4']
+
+
+Max_j Cj - Zj = 1.0
+Entering variable: x_4
+
+
+||   Iteration number : 11   ||
+
+
+X_B : [ inf  nan -inf]
+
+C_b for the basic varaibles: [1. 0. 0.]
+
+B :
+[[-1.  0.  0.]
+ [ 0.  1.  0.]
+ [ 1.  0.  1.]]
+
+B_inverse :
+[[-1. -0. -0.]
+ [ 0.  1.  0.]
+ [ 1.  0.  1.]]
+
+y = C_b*B_inverse = [-1.  0.  0.]
+
+Basic variables: ['x_4', 'x_6', 'x_7']
+Non-Basic variables: ['x_1', 'x_2', 'x_3', 'x_5']
+
+
+Max_j Cj - Zj = 1.0
+Entering variable: x_5
+
+
+||   Iteration number : 12   ||
+
+
+X_B : [ inf  nan -inf]
+
+C_b for the basic varaibles: [0. 0. 0.]
+
+B :
+[[1. 0. 0.]
+ [0. 1. 0.]
+ [0. 0. 1.]]
+
+B_inverse :
+[[1. 0. 0.]
+ [0. 1. 0.]
+ [0. 0. 1.]]
+
+y = C_b*B_inverse = [0. 0. 0.]
+
+Basic variables: ['x_5', 'x_6', 'x_7']
+Non-Basic variables: ['x_1', 'x_2', 'x_3', 'x_4']
+
+
+Max_j Cj - Zj = 1.0
+Entering variable: x_4
+
+
+||   Iteration number : 13   ||
+
+
+X_B : [ inf  nan -inf]
+
+C_b for the basic varaibles: [1. 0. 0.]
+
+B :
+[[-1.  0.  0.]
+ [ 0.  1.  0.]
+ [ 1.  0.  1.]]
+
+B_inverse :
+[[-1. -0. -0.]
+ [ 0.  1.  0.]
+ [ 1.  0.  1.]]
+
+y = C_b*B_inverse = [-1.  0.  0.]
+
+Basic variables: ['x_4', 'x_6', 'x_7']
+Non-Basic variables: ['x_1', 'x_2', 'x_3', 'x_5']
+
+
+Max_j Cj - Zj = 1.0
+Entering variable: x_5
+
+
+||   Iteration number : 14   ||
+
+
+X_B : [ inf  nan -inf]
+
+C_b for the basic varaibles: [0. 0. 0.]
+
+B :
+[[1. 0. 0.]
+ [0. 1. 0.]
+ [0. 0. 1.]]
+
+B_inverse :
+[[1. 0. 0.]
+ [0. 1. 0.]
+ [0. 0. 1.]]
+
+y = C_b*B_inverse = [0. 0. 0.]
+
+Basic variables: ['x_5', 'x_6', 'x_7']
+Non-Basic variables: ['x_1', 'x_2', 'x_3', 'x_4']
+
+
+Max_j Cj - Zj = 1.0
+Entering variable: x_4
+
+
+||   Iteration number : 15   ||
+
+
+X_B : [ inf  nan -inf]
+
+C_b for the basic varaibles: [1. 0. 0.]
+
+B :
+[[-1.  0.  0.]
+ [ 0.  1.  0.]
+ [ 1.  0.  1.]]
+
+B_inverse :
+[[-1. -0. -0.]
+ [ 0.  1.  0.]
+ [ 1.  0.  1.]]
+
+y = C_b*B_inverse = [-1.  0.  0.]
+
+Basic variables: ['x_4', 'x_6', 'x_7']
+Non-Basic variables: ['x_1', 'x_2', 'x_3', 'x_5']
+
+
+Max_j Cj - Zj = 1.0
+Entering variable: x_5
+
+
+||   Iteration number : 16   ||
+
+
+X_B : [ inf  nan -inf]
+
+C_b for the basic varaibles: [0. 0. 0.]
+
+B :
+[[1. 0. 0.]
+ [0. 1. 0.]
+ [0. 0. 1.]]
+
+B_inverse :
+[[1. 0. 0.]
+ [0. 1. 0.]
+ [0. 0. 1.]]
+
+y = C_b*B_inverse = [0. 0. 0.]
+
+Basic variables: ['x_5', 'x_6', 'x_7']
+Non-Basic variables: ['x_1', 'x_2', 'x_3', 'x_4']
+
+
+Max_j Cj - Zj = 1.0
+Entering variable: x_4
+
+
+||   Iteration number : 17   ||
+
+
+X_B : [ inf  nan -inf]
+
+C_b for the basic varaibles: [1. 0. 0.]
+
+B :
+[[-1.  0.  0.]
+ [ 0.  1.  0.]
+ [ 1.  0.  1.]]
+
+B_inverse :
+[[-1. -0. -0.]
+ [ 0.  1.  0.]
+ [ 1.  0.  1.]]
+
+y = C_b*B_inverse = [-1.  0.  0.]
+
+Basic variables: ['x_4', 'x_6', 'x_7']
+Non-Basic variables: ['x_1', 'x_2', 'x_3', 'x_5']
+
+
+Max_j Cj - Zj = 1.0
+Entering variable: x_5
+
+
+||   Iteration number : 18   ||
+
+
+X_B : [ inf  nan -inf]
+
+C_b for the basic varaibles: [0. 0. 0.]
+
+B :
+[[1. 0. 0.]
+ [0. 1. 0.]
+ [0. 0. 1.]]
+
+B_inverse :
+[[1. 0. 0.]
+ [0. 1. 0.]
+ [0. 0. 1.]]
+
+y = C_b*B_inverse = [0. 0. 0.]
+
+Basic variables: ['x_5', 'x_6', 'x_7']
+Non-Basic variables: ['x_1', 'x_2', 'x_3', 'x_4']
+
+
+Max_j Cj - Zj = 1.0
+Entering variable: x_4
+
+
+||   Iteration number : 19   ||
+
+
+X_B : [ inf  nan -inf]
+
+C_b for the basic varaibles: [1. 0. 0.]
+
+B :
+[[-1.  0.  0.]
+ [ 0.  1.  0.]
+ [ 1.  0.  1.]]
+
+B_inverse :
+[[-1. -0. -0.]
+ [ 0.  1.  0.]
+ [ 1.  0.  1.]]
+
+y = C_b*B_inverse = [-1.  0.  0.]
+
+Basic variables: ['x_4', 'x_6', 'x_7']
+Non-Basic variables: ['x_1', 'x_2', 'x_3', 'x_5']
+
+
+Max_j Cj - Zj = 1.0
+Entering variable: x_5
+
+
+||   Iteration number : 20   ||
+
+
+X_B : [ inf  nan -inf]
+
+C_b for the basic varaibles: [0. 0. 0.]
+
+B :
+[[1. 0. 0.]
+ [0. 1. 0.]
+ [0. 0. 1.]]
+
+B_inverse :
+[[1. 0. 0.]
+ [0. 1. 0.]
+ [0. 0. 1.]]
+
+y = C_b*B_inverse = [0. 0. 0.]
+
+Basic variables: ['x_5', 'x_6', 'x_7']
+Non-Basic variables: ['x_1', 'x_2', 'x_3', 'x_4']
+
+
+Max_j Cj - Zj = 1.0
+Entering variable: x_4
+
+
+||   Iteration number : 21   ||
+
+
+X_B : [ inf  nan -inf]
+
+C_b for the basic varaibles: [1. 0. 0.]
+
+B :
+[[-1.  0.  0.]
+ [ 0.  1.  0.]
+ [ 1.  0.  1.]]
+
+B_inverse :
+[[-1. -0. -0.]
+ [ 0.  1.  0.]
+ [ 1.  0.  1.]]
+
+y = C_b*B_inverse = [-1.  0.  0.]
+
+Basic variables: ['x_4', 'x_6', 'x_7']
+Non-Basic variables: ['x_1', 'x_2', 'x_3', 'x_5']
+
+
+Max_j Cj - Zj = 1.0
+Entering variable: x_5
+
+
+||   Iteration number : 22   ||
+
+
+X_B : [ inf  nan -inf]
+
+C_b for the basic varaibles: [0. 0. 0.]
+
+B :
+[[1. 0. 0.]
+ [0. 1. 0.]
+ [0. 0. 1.]]
+
+B_inverse :
+[[1. 0. 0.]
+ [0. 1. 0.]
+ [0. 0. 1.]]
+
+y = C_b*B_inverse = [0. 0. 0.]
+
+Basic variables: ['x_5', 'x_6', 'x_7']
+Non-Basic variables: ['x_1', 'x_2', 'x_3', 'x_4']
+
+
+Max_j Cj - Zj = 1.0
+Entering variable: x_4
+
+
+||   Iteration number : 23   ||
+
+
+X_B : [ inf  nan -inf]
+
+C_b for the basic varaibles: [1. 0. 0.]
+
+B :
+[[-1.  0.  0.]
+ [ 0.  1.  0.]
+ [ 1.  0.  1.]]
+
+B_inverse :
+[[-1. -0. -0.]
+ [ 0.  1.  0.]
+ [ 1.  0.  1.]]
+
+y = C_b*B_inverse = [-1.  0.  0.]
+
+Basic variables: ['x_4', 'x_6', 'x_7']
+Non-Basic variables: ['x_1', 'x_2', 'x_3', 'x_5']
+
+
+Max_j Cj - Zj = 1.0
+Entering variable: x_5
+
+
+||   Iteration number : 24   ||
+
+
+X_B : [ inf  nan -inf]
+
+C_b for the basic varaibles: [0. 0. 0.]
+
+B :
+[[1. 0. 0.]
+ [0. 1. 0.]
+ [0. 0. 1.]]
+
+B_inverse :
+[[1. 0. 0.]
+ [0. 1. 0.]
+ [0. 0. 1.]]
+
+y = C_b*B_inverse = [0. 0. 0.]
+
+Basic variables: ['x_5', 'x_6', 'x_7']
+Non-Basic variables: ['x_1', 'x_2', 'x_3', 'x_4']
+
+
+Max_j Cj - Zj = 1.0
+Entering variable: x_4
+
+
+||   Iteration number : 25   ||
+
+
+X_B : [ inf  nan -inf]
+
+C_b for the basic varaibles: [1. 0. 0.]
+
+B :
+[[-1.  0.  0.]
+ [ 0.  1.  0.]
+ [ 1.  0.  1.]]
+
+B_inverse :
+[[-1. -0. -0.]
+ [ 0.  1.  0.]
+ [ 1.  0.  1.]]
+
+y = C_b*B_inverse = [-1.  0.  0.]
+
+Basic variables: ['x_4', 'x_6', 'x_7']
+Non-Basic variables: ['x_1', 'x_2', 'x_3', 'x_5']
+
+
+Max_j Cj - Zj = 1.0
+Entering variable: x_5
+
+
+Caught into infinite loop problem is unbounded
+
+
+
+||   Final solution   ||
+x_4 = inf
+x_6 = nan
+x_7 = -inf
+18MA20015_LAB_7.py:203: RuntimeWarning: invalid value encountered in double_scalars
+  Z_val += self.C_j[int(self.basic_var[i])] * self.X_B[i]
+Z = nan
+
+

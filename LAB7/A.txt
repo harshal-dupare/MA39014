@@ -1,0 +1,101 @@
+3
+3
+5 10 8
+3 5 2 60
+4 4 4 72
+2 4 5 100
+
+
+
+_________________________________________________________________________________________________________
+
+OUTPUT:
+
+C:\Users\harshal d\Desktop\OR LAB>py 18MA20015_LAB_7.py
+
+
+X_B : [ 60.  72. 100.]
+
+B :
+[[1. 0. 0.]
+ [0. 1. 0.]
+ [0. 0. 1.]]
+
+C_b for the basic varaibles: [0. 0. 0.]
+
+B_inverse :
+[[1. 0. 0.]
+ [0. 1. 0.]
+ [0. 0. 1.]]
+
+y = C_b*B_inverse = [0. 0. 0.]
+
+Basic variables: ['x_4', 'x_5', 'x_6']
+Non-Basic variables: ['x_1', 'x_2', 'x_3']
+
+
+Max_j Cj - Zj = 10.0
+
+Entering variable: x_2
+ ||   Initial Table is  ||
+C_b      X_b      x_1      x_2      x_3      x_4      x_5      x_6      b
+0.0      x_4      3.0      5.0      2.0      1.0      0.0      0.0      60.0
+0.0      x_5      4.0      4.0      4.0      0.0      1.0      0.0      72.0
+0.0      x_6      2.0      4.0      5.0      0.0      0.0      1.0      100.0
+
+
+||   Iteration number : 1   ||
+
+
+X_B : [12. 24. 52.]
+
+C_b for the basic varaibles: [10.  0.  0.]
+
+B :
+[[5. 0. 0.]
+ [4. 1. 0.]
+ [4. 0. 1.]]
+
+B_inverse :
+[[ 0.2  0.   0. ]
+ [-0.8  1.   0. ]
+ [-0.8  0.   1. ]]
+
+y = C_b*B_inverse = [2. 0. 0.]
+
+Basic variables: ['x_2', 'x_5', 'x_6']
+Non-Basic variables: ['x_1', 'x_4', 'x_3']
+
+
+Max_j Cj - Zj = 4.0
+Entering variable: x_3
+
+
+||   Iteration number : 2   ||
+
+
+X_B : [ 8. 10. 18.]
+
+C_b for the basic varaibles: [10.  8.  0.]
+
+B :
+[[5. 2. 0.]
+ [4. 4. 0.]
+ [4. 5. 1.]]
+
+B_inverse :
+[[ 0.33333333 -0.16666667  0.        ]
+ [-0.33333333  0.41666667  0.        ]
+ [ 0.33333333 -1.41666667  1.        ]]
+
+y = C_b*B_inverse = [0.66666667 1.66666667 0.        ]
+
+Basic variables: ['x_2', 'x_3', 'x_6']
+Non-Basic variables: ['x_1', 'x_4', 'x_5']
+
+
+||   Final solution   ||
+x_2 = 8.0
+x_3 = 10.0
+x_6 = 18.0
+Z = 160.0
