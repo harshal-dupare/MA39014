@@ -1,12 +1,15 @@
 #include <iostream>
 #include <vector>
-#include "debug.h"
 
 using namespace std;
 typedef double R;
 
 struct linear_eq
 {
+    // x1+x2=3
+    // 2x1+3x2=5
+    // A = [[1,1],[2,3]]
+    // B = [3,5]
     vector<vector<R>> A;
     vector<R> B;
     vector<int> xids;

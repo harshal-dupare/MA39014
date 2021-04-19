@@ -1,0 +1,632 @@
+
+______________________________________________________________________
+
+
+18MA20015 | Harshal Dupare | Lab 10 | 24-3-2021 |
+
+______________________________________________________________________
+
+
+
+Q1
+
+Greedy method works on this problem
+INPUT:
+4
+4
+8 7 9 9
+5 2 7 8
+6 1 4 9
+2 3 2 6
+0
+
+OUTPUT:
+
+harshald@DESKTOP-D3B1M51:/mnt/c/Users/harshal d/Desktop/OR LAB$ ./a.out
+Number of Applicants: 4
+Number of Jobs: 4
+Enter cost of assigning i'th person to j'th job for next 4 lines in the format:
+c[i][0] c[i][1]... c[i][m-1]
+8 7 9 9
+5 2 7 8
+6 1 4 9
+2 3 2 6
+Initial Table is:
+
+                       |                      0 |                      1 |                      2 |                      3 |               Applicants
+                     0 |           0 : 8.000000 |           0 : 7.000000 |           0 : 9.000000 |           0 : 9.000000 |                       0/1
+                     1 |           0 : 5.000000 |           0 : 2.000000 |           0 : 7.000000 |           0 : 8.000000 |                       0/1
+                     2 |           0 : 6.000000 |           0 : 1.000000 |           0 : 4.000000 |           0 : 9.000000 |                       0/1
+                     3 |           0 : 2.000000 |           0 : 3.000000 |           0 : 2.000000 |           0 : 6.000000 |                       0/1
+                  Jobs |                    0/1 |                    0/1 |                    0/1 |                    0/1 |
+Input what method to use for calculating min number of crossing line:
+ "0" for Greedy method ( FAST but sometimes doesn't give exact solution)
+ "1" for Brute Force method ( SLOW but gives exact solution)
+ 0
+
+
+After reducing the inital rows and columns we get:
+
+                       |                      0 |                      1 |                      2 |                      3 |               Applicants
+                     0 |           0 : 1.000000 |           0 : 0.000000 |           0 : 2.000000 |           0 : 0.000000 |                       0/1
+                     1 |           0 : 3.000000 |           0 : 0.000000 |           0 : 5.000000 |           0 : 4.000000 |                       0/1
+                     2 |           0 : 5.000000 |           0 : 0.000000 |           0 : 3.000000 |           0 : 6.000000 |                       0/1
+                     3 |           0 : 0.000000 |           0 : 1.000000 |           0 : 0.000000 |           0 : 2.000000 |                       0/1
+                  Jobs |                    0/1 |                    0/1 |                    0/1 |                    0/1 |
+Iteration number 1
+Selected Zeros are at location (row_id, column_id):
+(1, 1), (3, 0), (0, 3),
+Crossed Rows:0, 3,
+Crossed Column:1,
+Table is:
+
+                       |                      0 |                      1 |                      2 |                      3 |               Applicants
+                     0 |         * 0 : 1.000000 |         * 0 : 0.000000 |         * 0 : 2.000000 |         * 0 : 0.000000 |                       0/1
+                     1 |           0 : 3.000000 |         * 0 : 0.000000 |           0 : 5.000000 |           0 : 4.000000 |                       0/1
+                     2 |           0 : 5.000000 |         * 0 : 0.000000 |           0 : 3.000000 |           0 : 6.000000 |                       0/1
+                     3 |         * 0 : 0.000000 |         * 0 : 1.000000 |         * 0 : 0.000000 |         * 0 : 2.000000 |                       0/1
+                  Jobs |                    0/1 |                    0/1 |                    0/1 |                    0/1 |
+
+Optimality hasn't yet reached
+
+Smallest uncovered element found at: (1, 0) with value of 3
+Optimal solution found
+Iterations terminated
+
+                       |                      0 |                      1 |                      2 |                      3 |               Applicants
+                     0 |           0 : 1.000000 |           0 : 3.000000 |           0 : 2.000000 |           1 : 0.000000 |                       1/1
+                     1 |           1 : 0.000000 |           0 : 0.000000 |           0 : 2.000000 |           0 : 1.000000 |                       1/1
+                     2 |           0 : 2.000000 |           1 : 0.000000 |           0 : 0.000000 |           0 : 3.000000 |                       1/1
+                     3 |           0 : 0.000000 |           0 : 4.000000 |           1 : 0.000000 |           0 : 2.000000 |                       1/1
+                  Jobs |                    1/1 |                    1/1 |                    1/1 |                    1/1 |
+Final Optimal cost is :17
+Solution is:
+Applicant 0 Assigned to 3 Job
+Applicant 1 Assigned to 0 Job
+Applicant 2 Assigned to 1 Job
+Applicant 3 Assigned to 2 Job
+
+
+## Trying brute force solution too for varification
+
+harshald@DESKTOP-D3B1M51:/mnt/c/Users/harshal d/Desktop/OR LAB$ ./a.out
+Number of Applicants: 4
+Number of Jobs: 4
+Enter cost of assigning i'th person to j'th job for next 4 lines in the format:
+c[i][0] c[i][1]... c[i][m-1]
+8 7 9 9
+5 2 7 8
+6 1 4 9
+2 3 2 6
+Initial Table is:
+
+                       |                      0 |                      1 |                      2 |                      3 |               Applicants
+                     0 |           0 : 8.000000 |           0 : 7.000000 |           0 : 9.000000 |           0 : 9.000000 |                       0/1
+                     1 |           0 : 5.000000 |           0 : 2.000000 |           0 : 7.000000 |           0 : 8.000000 |                       0/1
+                     2 |           0 : 6.000000 |           0 : 1.000000 |           0 : 4.000000 |           0 : 9.000000 |                       0/1
+                     3 |           0 : 2.000000 |           0 : 3.000000 |           0 : 2.000000 |           0 : 6.000000 |                       0/1
+                  Jobs |                    0/1 |                    0/1 |                    0/1 |                    0/1 |
+Input what method to use for calculating min number of crossing line:
+ "0" for Greedy method ( FAST but sometimes doesn't give exact solution)
+ "1" for Brute Force method ( SLOW but gives exact solution)
+ 1
+
+
+After reducing the inital rows and columns we get:
+
+                       |                      0 |                      1 |                      2 |                      3 |               Applicants
+                     0 |           0 : 1.000000 |           0 : 0.000000 |           0 : 2.000000 |           0 : 0.000000 |                       0/1
+                     1 |           0 : 3.000000 |           0 : 0.000000 |           0 : 5.000000 |           0 : 4.000000 |                       0/1
+                     2 |           0 : 5.000000 |           0 : 0.000000 |           0 : 3.000000 |           0 : 6.000000 |                       0/1
+                     3 |           0 : 0.000000 |           0 : 1.000000 |           0 : 0.000000 |           0 : 2.000000 |                       0/1
+                  Jobs |                    0/1 |                    0/1 |                    0/1 |                    0/1 |
+Iteration number 1
+Crossed Rows:3,
+Crossed Columns:1, 3,
+Table is:
+
+                       |                      0 |                      1 |                      2 |                      3 |               Applicants
+                     0 |           0 : 1.000000 |         * 0 : 0.000000 |           0 : 2.000000 |         * 0 : 0.000000 |                       0/1
+                     1 |           0 : 3.000000 |         * 0 : 0.000000 |           0 : 5.000000 |         * 0 : 4.000000 |                       0/1
+                     2 |           0 : 5.000000 |         * 0 : 0.000000 |           0 : 3.000000 |         * 0 : 6.000000 |                       0/1
+                     3 |         * 0 : 0.000000 |         * 0 : 1.000000 |         * 0 : 0.000000 |         * 0 : 2.000000 |                       0/1
+                  Jobs |                    0/1 |                    0/1 |                    0/1 |                    0/1 |
+
+Smallest uncovered element found at: (0, 0) with value of 1
+Iteration number 2
+Crossed Rows:0, 3,
+Crossed Columns:1,
+Table is:
+
+                       |                      0 |                      1 |                      2 |                      3 |               Applicants
+                     0 |         * 0 : 0.000000 |         * 0 : 0.000000 |         * 0 : 1.000000 |         * 0 : 0.000000 |                       0/1
+                     1 |           0 : 2.000000 |         * 0 : 0.000000 |           0 : 4.000000 |           0 : 4.000000 |                       0/1
+                     2 |           0 : 4.000000 |         * 0 : 0.000000 |           0 : 2.000000 |           0 : 6.000000 |                       0/1
+                     3 |         * 0 : 0.000000 |         * 0 : 2.000000 |         * 0 : 0.000000 |         * 0 : 3.000000 |                       0/1
+                  Jobs |                    0/1 |                    0/1 |                    0/1 |                    0/1 |
+
+Smallest uncovered element found at: (1, 0) with value of 2
+Optimal solution found
+Iterations terminated
+
+                       |                      0 |                      1 |                      2 |                      3 |               Applicants
+                     0 |           0 : 0.000000 |           0 : 2.000000 |           0 : 1.000000 |           1 : 0.000000 |                       1/1
+                     1 |           1 : 0.000000 |           0 : 0.000000 |           0 : 2.000000 |           0 : 2.000000 |                       1/1
+                     2 |           0 : 2.000000 |           1 : 0.000000 |           0 : 0.000000 |           0 : 4.000000 |                       1/1
+                     3 |           0 : 0.000000 |           0 : 4.000000 |           1 : 0.000000 |           0 : 3.000000 |                       1/1
+                  Jobs |                    1/1 |                    1/1 |                    1/1 |                    1/1 |
+Final Optimal cost is :17
+Solution is:
+Applicant 0 Assigned to 3 Job
+Applicant 1 Assigned to 0 Job
+Applicant 2 Assigned to 1 Job
+Applicant 3 Assigned to 2 Job
+_________________________________________________________________________________________________
+
+
+
+Q2
+
+Greedy method works for this problem
+INPUT:
+4
+5
+85 93 24 6 10 
+70 57 20 1 19 
+65 37 25 89 77
+68 97 23 84 38
+0
+
+
+OUTPUT:
+
+harshald@DESKTOP-D3B1M51:/mnt/c/Users/harshal d/Desktop/OR LAB$ ./a.out
+Number of Applicants: 4
+Number of Jobs: 5
+Enter cost of assigning i'th person to j'th job for next 4 lines in the format:
+c[i][0] c[i][1]... c[i][m-1]
+85 93 24 6 10
+70 57 20 1 19
+65 37 25 89 77
+68 97 23 84 38
+Adding Extra zero assignment cost Applicant
+Initial Table is:
+
+                       |                      0 |                      1 |                      2 |                      3 |                      4 |               Applicants
+                     0 |          0 : 85.000000 |          0 : 93.000000 |          0 : 24.000000 |           0 : 6.000000 |          0 : 10.000000 |                       0/1
+                     1 |          0 : 70.000000 |          0 : 57.000000 |          0 : 20.000000 |           0 : 1.000000 |          0 : 19.000000 |                       0/1
+                     2 |          0 : 65.000000 |          0 : 37.000000 |          0 : 25.000000 |          0 : 89.000000 |          0 : 77.000000 |                       0/1
+                     3 |          0 : 68.000000 |          0 : 97.000000 |          0 : 23.000000 |          0 : 84.000000 |          0 : 38.000000 |                       0/1
+                     4 |           0 : 0.000000 |           0 : 0.000000 |           0 : 0.000000 |           0 : 0.000000 |           0 : 0.000000 |                       0/1
+                  Jobs |                    0/1 |                    0/1 |                    0/1 |                    0/1 |                    0/1 |
+Input what method to use for calculating min number of crossing line:
+ "0" for Greedy method ( FAST but sometimes doesn't give exact solution)
+ "1" for Brute Force method ( SLOW but gives exact solution)
+ 0
+
+
+After reducing the inital rows and columns we get:
+
+                       |                      0 |                      1 |                      2 |                      3 |                      4 |               Applicants
+                     0 |          0 : 79.000000 |          0 : 87.000000 |          0 : 18.000000 |           0 : 0.000000 |           0 : 4.000000 |                       0/1
+                     1 |          0 : 69.000000 |          0 : 56.000000 |          0 : 19.000000 |           0 : 0.000000 |          0 : 18.000000 |                       0/1
+                     2 |          0 : 40.000000 |          0 : 12.000000 |           0 : 0.000000 |          0 : 64.000000 |          0 : 52.000000 |                       0/1
+                     3 |          0 : 45.000000 |          0 : 74.000000 |           0 : 0.000000 |          0 : 61.000000 |          0 : 15.000000 |                       0/1
+                     4 |           0 : 0.000000 |           0 : 0.000000 |           0 : 0.000000 |           0 : 0.000000 |           0 : 0.000000 |                       0/1
+                  Jobs |                    0/1 |                    0/1 |                    0/1 |                    0/1 |                    0/1 |
+Iteration number 1
+Selected Zeros are at location (row_id, column_id):
+(0, 3), (2, 2), (4, 0),
+Crossed Rows:4,
+Crossed Column:2, 3,
+Table is:
+
+                       |                      0 |                      1 |                      2 |                      3 |                      4 |               Applicants
+                     0 |          0 : 79.000000 |          0 : 87.000000 |        * 0 : 18.000000 |         * 0 : 0.000000 |           0 : 4.000000 |                       0/1
+                     1 |          0 : 69.000000 |          0 : 56.000000 |        * 0 : 19.000000 |         * 0 : 0.000000 |          0 : 18.000000 |                       0/1
+                     2 |          0 : 40.000000 |          0 : 12.000000 |         * 0 : 0.000000 |        * 0 : 64.000000 |          0 : 52.000000 |                       0/1
+                     3 |          0 : 45.000000 |          0 : 74.000000 |         * 0 : 0.000000 |        * 0 : 61.000000 |          0 : 15.000000 |                       0/1
+                     4 |         * 0 : 0.000000 |         * 0 : 0.000000 |         * 0 : 0.000000 |         * 0 : 0.000000 |         * 0 : 0.000000 |                       0/1
+                  Jobs |                    0/1 |                    0/1 |                    0/1 |                    0/1 |                    0/1 |
+
+Optimality hasn't yet reached
+
+Smallest uncovered element found at: (0, 4) with value of 4
+Iteration number 2
+Selected Zeros are at location (row_id, column_id):
+(1, 3), (2, 2), (4, 0), (0, 4),
+Crossed Rows:0, 4,
+Crossed Column:2, 3,
+Table is:
+
+                       |                      0 |                      1 |                      2 |                      3 |                      4 |               Applicants
+                     0 |        * 0 : 75.000000 |        * 0 : 83.000000 |        * 0 : 18.000000 |         * 0 : 0.000000 |         * 0 : 0.000000 |                       0/1
+                     1 |          0 : 65.000000 |          0 : 52.000000 |        * 0 : 19.000000 |         * 0 : 0.000000 |          0 : 14.000000 |                       0/1
+                     2 |          0 : 36.000000 |           0 : 8.000000 |         * 0 : 0.000000 |        * 0 : 64.000000 |          0 : 48.000000 |                       0/1
+                     3 |          0 : 41.000000 |          0 : 70.000000 |         * 0 : 0.000000 |        * 0 : 61.000000 |          0 : 11.000000 |                       0/1
+                     4 |         * 0 : 0.000000 |         * 0 : 0.000000 |         * 0 : 4.000000 |         * 0 : 4.000000 |         * 0 : 0.000000 |                       0/1
+                  Jobs |                    0/1 |                    0/1 |                    0/1 |                    0/1 |                    0/1 |
+
+Optimality hasn't yet reached
+
+Smallest uncovered element found at: (2, 1) with value of 8
+Optimal solution found
+Iterations terminated
+
+                       |                      0 |                      1 |                      2 |                      3 |                      4 |               Applicants
+                     0 |          0 : 75.000000 |          0 : 83.000000 |          0 : 26.000000 |           0 : 8.000000 |           1 : 0.000000 |                       1/1
+                     1 |          0 : 57.000000 |          0 : 44.000000 |          0 : 19.000000 |           1 : 0.000000 |           0 : 6.000000 |                       1/1
+                     2 |          0 : 28.000000 |           1 : 0.000000 |           0 : 0.000000 |          0 : 64.000000 |          0 : 40.000000 |                       1/1
+                     3 |          0 : 33.000000 |          0 : 62.000000 |           1 : 0.000000 |          0 : 61.000000 |           0 : 3.000000 |                       1/1
+                     4 |           1 : 0.000000 |           0 : 0.000000 |          0 : 12.000000 |          0 : 12.000000 |           0 : 0.000000 |                       1/1
+                  Jobs |                    1/1 |                    1/1 |                    1/1 |                    1/1 |                    1/1 |
+Final Optimal cost is :71
+Solution is:
+Applicant 0 Assigned to 4 Job
+Applicant 1 Assigned to 3 Job
+Applicant 2 Assigned to 1 Job
+Applicant 3 Assigned to 2 Job
+Applicant 4 Assigned to 0 Job
+
+
+
+## Trying brufe force method to verify the solution
+
+harshald@DESKTOP-D3B1M51:/mnt/c/Users/harshal d/Desktop/OR LAB$ ./a.out
+Number of Applicants: 4
+Number of Jobs: 5
+Enter cost of assigning i'th person to j'th job for next 4 lines in the format:
+c[i][0] c[i][1]... c[i][m-1]
+85 93 24 6 10
+70 57 20 1 19
+65 37 25 89 77
+68 97 23 84 38
+Adding Extra zero assignment cost Applicant
+Initial Table is:
+
+                       |                      0 |                      1 |                      2 |                      3 |                      4 |               Applicants
+                     0 |          0 : 85.000000 |          0 : 93.000000 |          0 : 24.000000 |           0 : 6.000000 |          0 : 10.000000 |                       0/1
+                     1 |          0 : 70.000000 |          0 : 57.000000 |          0 : 20.000000 |           0 : 1.000000 |          0 : 19.000000 |                       0/1
+                     2 |          0 : 65.000000 |          0 : 37.000000 |          0 : 25.000000 |          0 : 89.000000 |          0 : 77.000000 |                       0/1
+                     3 |          0 : 68.000000 |          0 : 97.000000 |          0 : 23.000000 |          0 : 84.000000 |          0 : 38.000000 |                       0/1
+                     4 |           0 : 0.000000 |           0 : 0.000000 |           0 : 0.000000 |           0 : 0.000000 |           0 : 0.000000 |                       0/1
+                  Jobs |                    0/1 |                    0/1 |                    0/1 |                    0/1 |                    0/1 |
+Input what method to use for calculating min number of crossing line:
+ "0" for Greedy method ( FAST but sometimes doesn't give exact solution)
+ "1" for Brute Force method ( SLOW but gives exact solution)
+ 1
+
+
+After reducing the inital rows and columns we get:
+
+                       |                      0 |                      1 |                      2 |                      3 |                      4 |               Applicants
+                     0 |          0 : 79.000000 |          0 : 87.000000 |          0 : 18.000000 |           0 : 0.000000 |           0 : 4.000000 |                       0/1
+                     1 |          0 : 69.000000 |          0 : 56.000000 |          0 : 19.000000 |           0 : 0.000000 |          0 : 18.000000 |                       0/1
+                     2 |          0 : 40.000000 |          0 : 12.000000 |           0 : 0.000000 |          0 : 64.000000 |          0 : 52.000000 |                       0/1
+                     3 |          0 : 45.000000 |          0 : 74.000000 |           0 : 0.000000 |          0 : 61.000000 |          0 : 15.000000 |                       0/1
+                     4 |           0 : 0.000000 |           0 : 0.000000 |           0 : 0.000000 |           0 : 0.000000 |           0 : 0.000000 |                       0/1
+                  Jobs |                    0/1 |                    0/1 |                    0/1 |                    0/1 |                    0/1 |
+Iteration number 1
+Crossed Rows:4,
+Crossed Columns:2, 3,
+Table is:
+
+                       |                      0 |                      1 |                      2 |                      3 |                      4 |               Applicants
+                     0 |          0 : 79.000000 |          0 : 87.000000 |        * 0 : 18.000000 |         * 0 : 0.000000 |           0 : 4.000000 |                       0/1
+                     1 |          0 : 69.000000 |          0 : 56.000000 |        * 0 : 19.000000 |         * 0 : 0.000000 |          0 : 18.000000 |                       0/1
+                     2 |          0 : 40.000000 |          0 : 12.000000 |         * 0 : 0.000000 |        * 0 : 64.000000 |          0 : 52.000000 |                       0/1
+                     3 |          0 : 45.000000 |          0 : 74.000000 |         * 0 : 0.000000 |        * 0 : 61.000000 |          0 : 15.000000 |                       0/1
+                     4 |         * 0 : 0.000000 |         * 0 : 0.000000 |         * 0 : 0.000000 |         * 0 : 0.000000 |         * 0 : 0.000000 |                       0/1
+                  Jobs |                    0/1 |                    0/1 |                    0/1 |                    0/1 |                    0/1 |
+
+Smallest uncovered element found at: (0, 4) with value of 4
+Iteration number 2
+Crossed Rows:0, 4,
+Crossed Columns:2, 3,
+Table is:
+
+                       |                      0 |                      1 |                      2 |                      3 |                      4 |               Applicants
+                     0 |        * 0 : 75.000000 |        * 0 : 83.000000 |        * 0 : 18.000000 |         * 0 : 0.000000 |         * 0 : 0.000000 |                       0/1
+                     1 |          0 : 65.000000 |          0 : 52.000000 |        * 0 : 19.000000 |         * 0 : 0.000000 |          0 : 14.000000 |                       0/1
+                     2 |          0 : 36.000000 |           0 : 8.000000 |         * 0 : 0.000000 |        * 0 : 64.000000 |          0 : 48.000000 |                       0/1
+                     3 |          0 : 41.000000 |          0 : 70.000000 |         * 0 : 0.000000 |        * 0 : 61.000000 |          0 : 11.000000 |                       0/1
+                     4 |         * 0 : 0.000000 |         * 0 : 0.000000 |         * 0 : 4.000000 |         * 0 : 4.000000 |         * 0 : 0.000000 |                       0/1
+                  Jobs |                    0/1 |                    0/1 |                    0/1 |                    0/1 |                    0/1 |
+
+Smallest uncovered element found at: (2, 1) with value of 8
+Optimal solution found
+Iterations terminated
+
+                       |                      0 |                      1 |                      2 |                      3 |                      4 |               Applicants
+                     0 |          0 : 75.000000 |          0 : 83.000000 |          0 : 26.000000 |           0 : 8.000000 |           1 : 0.000000 |                       1/1
+                     1 |          0 : 57.000000 |          0 : 44.000000 |          0 : 19.000000 |           1 : 0.000000 |           0 : 6.000000 |                       1/1
+                     2 |          0 : 28.000000 |           1 : 0.000000 |           0 : 0.000000 |          0 : 64.000000 |          0 : 40.000000 |                       1/1
+                     3 |          0 : 33.000000 |          0 : 62.000000 |           1 : 0.000000 |          0 : 61.000000 |           0 : 3.000000 |                       1/1
+                     4 |           1 : 0.000000 |           0 : 0.000000 |          0 : 12.000000 |          0 : 12.000000 |           0 : 0.000000 |                       1/1
+                  Jobs |                    1/1 |                    1/1 |                    1/1 |                    1/1 |                    1/1 |
+Final Optimal cost is :71
+Solution is:
+Applicant 0 Assigned to 4 Job
+Applicant 1 Assigned to 3 Job
+Applicant 2 Assigned to 1 Job
+Applicant 3 Assigned to 2 Job
+Applicant 4 Assigned to 0 Job
+
+_________________________________________________________________________________________________
+
+
+Q3
+
+Greedy method works for this problem
+INPUT:
+5
+4
+57 97 56 43 
+33 59 63 97 
+22 22 33 11 
+31 45 84 71 
+98 7 90 96
+0
+
+OUTPUT:
+
+harshald@DESKTOP-D3B1M51:/mnt/c/Users/harshal d/Desktop/OR LAB$ ./a.out
+Number of Applicants: 5
+Number of Jobs: 4
+Enter cost of assigning i'th person to j'th job for next 5 lines in the format:
+c[i][0] c[i][1]... c[i][m-1]
+57 97 56 43
+33 59 63 97
+22 22 33 11
+31 45 84 71
+98 7 90 96
+Adding Extra zero assignment cost Jobs
+Initial Table is:
+
+                       |                      0 |                      1 |                      2 |                      3 |                      4 |               Applicants
+                     0 |          0 : 57.000000 |          0 : 97.000000 |          0 : 56.000000 |          0 : 43.000000 |           0 : 0.000000 |                       0/1
+                     1 |          0 : 33.000000 |          0 : 59.000000 |          0 : 63.000000 |          0 : 97.000000 |           0 : 0.000000 |                       0/1
+                     2 |          0 : 22.000000 |          0 : 22.000000 |          0 : 33.000000 |          0 : 11.000000 |           0 : 0.000000 |                       0/1
+                     3 |          0 : 31.000000 |          0 : 45.000000 |          0 : 84.000000 |          0 : 71.000000 |           0 : 0.000000 |                       0/1
+                     4 |          0 : 98.000000 |           0 : 7.000000 |          0 : 90.000000 |          0 : 96.000000 |           0 : 0.000000 |                       0/1
+                  Jobs |                    0/1 |                    0/1 |                    0/1 |                    0/1 |                    0/1 |
+Input what method to use for calculating min number of crossing line:
+ "0" for Greedy method ( FAST but sometimes doesn't give exact solution)
+ "1" for Brute Force method ( SLOW but gives exact solution)
+ 0
+
+
+After reducing the inital rows and columns we get:
+
+                       |                      0 |                      1 |                      2 |                      3 |                      4 |               Applicants
+                     0 |          0 : 35.000000 |          0 : 90.000000 |          0 : 23.000000 |          0 : 32.000000 |           0 : 0.000000 |                       0/1
+                     1 |          0 : 11.000000 |          0 : 52.000000 |          0 : 30.000000 |          0 : 86.000000 |           0 : 0.000000 |                       0/1
+                     2 |           0 : 0.000000 |          0 : 15.000000 |           0 : 0.000000 |           0 : 0.000000 |           0 : 0.000000 |                       0/1
+                     3 |           0 : 9.000000 |          0 : 38.000000 |          0 : 51.000000 |          0 : 60.000000 |           0 : 0.000000 |                       0/1
+                     4 |          0 : 76.000000 |           0 : 0.000000 |          0 : 57.000000 |          0 : 85.000000 |           0 : 0.000000 |                       0/1
+                  Jobs |                    0/1 |                    0/1 |                    0/1 |                    0/1 |                    0/1 |
+Iteration number 1
+Selected Zeros are at location (row_id, column_id):
+(0, 4), (4, 1), (2, 0),
+Crossed Rows:2,
+Crossed Column:1, 4,
+Table is:
+
+                       |                      0 |                      1 |                      2 |                      3 |                      4 |               Applicants
+                     0 |          0 : 35.000000 |        * 0 : 90.000000 |          0 : 23.000000 |          0 : 32.000000 |         * 0 : 0.000000 |                       0/1
+                     1 |          0 : 11.000000 |        * 0 : 52.000000 |          0 : 30.000000 |          0 : 86.000000 |         * 0 : 0.000000 |                       0/1
+                     2 |         * 0 : 0.000000 |        * 0 : 15.000000 |         * 0 : 0.000000 |         * 0 : 0.000000 |         * 0 : 0.000000 |                       0/1
+                     3 |           0 : 9.000000 |        * 0 : 38.000000 |          0 : 51.000000 |          0 : 60.000000 |         * 0 : 0.000000 |                       0/1
+                     4 |          0 : 76.000000 |         * 0 : 0.000000 |          0 : 57.000000 |          0 : 85.000000 |         * 0 : 0.000000 |                       0/1
+                  Jobs |                    0/1 |                    0/1 |                    0/1 |                    0/1 |                    0/1 |
+
+Optimality hasn't yet reached
+
+Smallest uncovered element found at: (3, 0) with value of 9
+Iteration number 2
+Selected Zeros are at location (row_id, column_id):
+(0, 4), (3, 0), (4, 1), (2, 2),
+Crossed Rows:2,
+Crossed Column:0, 1, 4,
+Table is:
+
+                       |                      0 |                      1 |                      2 |                      3 |                      4 |               Applicants
+                     0 |        * 0 : 26.000000 |        * 0 : 90.000000 |          0 : 14.000000 |          0 : 23.000000 |         * 0 : 0.000000 |                       0/1
+                     1 |         * 0 : 2.000000 |        * 0 : 52.000000 |          0 : 21.000000 |          0 : 77.000000 |         * 0 : 0.000000 |                       0/1
+                     2 |         * 0 : 0.000000 |        * 0 : 24.000000 |         * 0 : 0.000000 |         * 0 : 0.000000 |         * 0 : 9.000000 |                       0/1
+                     3 |         * 0 : 0.000000 |        * 0 : 38.000000 |          0 : 42.000000 |          0 : 51.000000 |         * 0 : 0.000000 |                       0/1
+                     4 |        * 0 : 67.000000 |         * 0 : 0.000000 |          0 : 48.000000 |          0 : 76.000000 |         * 0 : 0.000000 |                       0/1
+                  Jobs |                    0/1 |                    0/1 |                    0/1 |                    0/1 |                    0/1 |
+
+Optimality hasn't yet reached
+
+Smallest uncovered element found at: (0, 2) with value of 14
+Optimal solution found
+Iterations terminated
+
+                       |                      0 |                      1 |                      2 |                      3 |                      4 |               Applicants
+                     0 |          0 : 26.000000 |          0 : 90.000000 |           1 : 0.000000 |           0 : 9.000000 |           0 : 0.000000 |                       1/1
+                     1 |           0 : 2.000000 |          0 : 52.000000 |           0 : 7.000000 |          0 : 63.000000 |           1 : 0.000000 |                       1/1
+                     2 |          0 : 14.000000 |          0 : 38.000000 |           0 : 0.000000 |           1 : 0.000000 |          0 : 23.000000 |                       1/1
+                     3 |           1 : 0.000000 |          0 : 38.000000 |          0 : 28.000000 |          0 : 37.000000 |           0 : 0.000000 |                       1/1
+                     4 |          0 : 67.000000 |           1 : 0.000000 |          0 : 34.000000 |          0 : 62.000000 |           0 : 0.000000 |                       1/1
+                  Jobs |                    1/1 |                    1/1 |                    1/1 |                    1/1 |                    1/1 |
+Final Optimal cost is :105
+Solution is:
+Applicant 0 Assigned to 2 Job
+Applicant 1 Assigned to 4 Job
+Applicant 2 Assigned to 3 Job
+Applicant 3 Assigned to 0 Job
+Applicant 4 Assigned to 1 Job
+
+
+
+## We can still try brute force method and verify
+
+harshald@DESKTOP-D3B1M51:/mnt/c/Users/harshal d/Desktop/OR LAB$ ./a.out
+Number of Applicants: 5
+Number of Jobs: 4
+Enter cost of assigning i'th person to j'th job for next 5 lines in the format:
+c[i][0] c[i][1]... c[i][m-1]
+57 97 56 43
+33 59 63 97
+22 22 33 11
+31 45 84 71
+98 7 90 96
+Adding Extra zero assignment cost Jobs
+Initial Table is:
+
+                       |                      0 |                      1 |                      2 |                      3 |                      4 |               Applicants
+                     0 |          0 : 57.000000 |          0 : 97.000000 |          0 : 56.000000 |          0 : 43.000000 |           0 : 0.000000 |                       0/1
+                     1 |          0 : 33.000000 |          0 : 59.000000 |          0 : 63.000000 |          0 : 97.000000 |           0 : 0.000000 |                       0/1
+                     2 |          0 : 22.000000 |          0 : 22.000000 |          0 : 33.000000 |          0 : 11.000000 |           0 : 0.000000 |                       0/1
+                     3 |          0 : 31.000000 |          0 : 45.000000 |          0 : 84.000000 |          0 : 71.000000 |           0 : 0.000000 |                       0/1
+                     4 |          0 : 98.000000 |           0 : 7.000000 |          0 : 90.000000 |          0 : 96.000000 |           0 : 0.000000 |                       0/1
+                  Jobs |                    0/1 |                    0/1 |                    0/1 |                    0/1 |                    0/1 |
+Input what method to use for calculating min number of crossing line:
+ "0" for Greedy method ( FAST but sometimes doesn't give exact solution)
+ "1" for Brute Force method ( SLOW but gives exact solution)
+ 1
+
+
+After reducing the inital rows and columns we get:
+
+                       |                      0 |                      1 |                      2 |                      3 |                      4 |               Applicants
+                     0 |          0 : 35.000000 |          0 : 90.000000 |          0 : 23.000000 |          0 : 32.000000 |           0 : 0.000000 |                       0/1
+                     1 |          0 : 11.000000 |          0 : 52.000000 |          0 : 30.000000 |          0 : 86.000000 |           0 : 0.000000 |                       0/1
+                     2 |           0 : 0.000000 |          0 : 15.000000 |           0 : 0.000000 |           0 : 0.000000 |           0 : 0.000000 |                       0/1
+                     3 |           0 : 9.000000 |          0 : 38.000000 |          0 : 51.000000 |          0 : 60.000000 |           0 : 0.000000 |                       0/1
+                     4 |          0 : 76.000000 |           0 : 0.000000 |          0 : 57.000000 |          0 : 85.000000 |           0 : 0.000000 |                       0/1
+                  Jobs |                    0/1 |                    0/1 |                    0/1 |                    0/1 |                    0/1 |
+Iteration number 1
+Crossed Rows:2,
+Crossed Columns:1, 4,
+Table is:
+
+                       |                      0 |                      1 |                      2 |                      3 |                      4 |               Applicants
+                     0 |          0 : 35.000000 |        * 0 : 90.000000 |          0 : 23.000000 |          0 : 32.000000 |         * 0 : 0.000000 |                       0/1
+                     1 |          0 : 11.000000 |        * 0 : 52.000000 |          0 : 30.000000 |          0 : 86.000000 |         * 0 : 0.000000 |                       0/1
+                     2 |         * 0 : 0.000000 |        * 0 : 15.000000 |         * 0 : 0.000000 |         * 0 : 0.000000 |         * 0 : 0.000000 |                       0/1
+                     3 |           0 : 9.000000 |        * 0 : 38.000000 |          0 : 51.000000 |          0 : 60.000000 |         * 0 : 0.000000 |                       0/1
+                     4 |          0 : 76.000000 |         * 0 : 0.000000 |          0 : 57.000000 |          0 : 85.000000 |         * 0 : 0.000000 |                       0/1
+                  Jobs |                    0/1 |                    0/1 |                    0/1 |                    0/1 |                    0/1 |
+
+Smallest uncovered element found at: (3, 0) with value of 9
+Iteration number 2
+Crossed Rows:2, 4,
+Crossed Columns:0, 4,
+Table is:
+
+                       |                      0 |                      1 |                      2 |                      3 |                      4 |               Applicants
+                     0 |        * 0 : 26.000000 |          0 : 90.000000 |          0 : 14.000000 |          0 : 23.000000 |         * 0 : 0.000000 |                       0/1
+                     1 |         * 0 : 2.000000 |          0 : 52.000000 |          0 : 21.000000 |          0 : 77.000000 |         * 0 : 0.000000 |                       0/1
+                     2 |         * 0 : 0.000000 |        * 0 : 24.000000 |         * 0 : 0.000000 |         * 0 : 0.000000 |         * 0 : 9.000000 |                       0/1
+                     3 |         * 0 : 0.000000 |          0 : 38.000000 |          0 : 42.000000 |          0 : 51.000000 |         * 0 : 0.000000 |                       0/1
+                     4 |        * 0 : 67.000000 |         * 0 : 0.000000 |        * 0 : 48.000000 |        * 0 : 76.000000 |         * 0 : 0.000000 |                       0/1
+                  Jobs |                    0/1 |                    0/1 |                    0/1 |                    0/1 |                    0/1 |
+
+Smallest uncovered element found at: (0, 2) with value of 14
+Optimal solution found
+Iterations terminated
+
+                       |                      0 |                      1 |                      2 |                      3 |                      4 |               Applicants
+                     0 |          0 : 26.000000 |          0 : 76.000000 |           1 : 0.000000 |           0 : 9.000000 |           0 : 0.000000 |                       1/1
+                     1 |           0 : 2.000000 |          0 : 38.000000 |           0 : 7.000000 |          0 : 63.000000 |           1 : 0.000000 |                       1/1
+                     2 |          0 : 14.000000 |          0 : 24.000000 |           0 : 0.000000 |           1 : 0.000000 |          0 : 23.000000 |                       1/1
+                     3 |           1 : 0.000000 |          0 : 24.000000 |          0 : 28.000000 |          0 : 37.000000 |           0 : 0.000000 |                       1/1
+                     4 |          0 : 81.000000 |           1 : 0.000000 |          0 : 48.000000 |          0 : 76.000000 |          0 : 14.000000 |                       1/1
+                  Jobs |                    1/1 |                    1/1 |                    1/1 |                    1/1 |                    1/1 |
+Final Optimal cost is :105
+Solution is:
+Applicant 0 Assigned to 2 Job
+Applicant 1 Assigned to 4 Job
+Applicant 2 Assigned to 3 Job
+Applicant 3 Assigned to 0 Job
+Applicant 4 Assigned to 1 Job
+
+_________________________________________________________________________________________________
+
+
+Q4
+
+Greedy method DOES NOT work on this probelm as it falls into a loop
+hence using brute force method
+INPUT:
+5
+5
+15 18 1 40 93 
+86 86 85 86 86 
+19 19 79 54 78 
+56 80 35 27 14 
+54 53 47 99 42
+1
+
+
+OUTPUT:
+
+harshald@DESKTOP-D3B1M51:/mnt/c/Users/harshal d/Desktop/OR LAB$ ./a.out
+Number of Applicants: 5
+Number of Jobs: 5
+Enter cost of assigning i'th person to j'th job for next 5 lines in the format:
+c[i][0] c[i][1]... c[i][m-1]
+15 18 1 40 93
+86 86 85 86 86
+19 19 79 54 78
+56 80 35 27 14
+54 53 47 99 42
+Initial Table is:
+
+                       |                      0 |                      1 |                      2 |                      3 |                      4 |               Applicants
+                     0 |          0 : 15.000000 |          0 : 18.000000 |           0 : 1.000000 |          0 : 40.000000 |          0 : 93.000000 |                       0/1
+                     1 |          0 : 86.000000 |          0 : 86.000000 |          0 : 85.000000 |          0 : 86.000000 |          0 : 86.000000 |                       0/1
+                     2 |          0 : 19.000000 |          0 : 19.000000 |          0 : 79.000000 |          0 : 54.000000 |          0 : 78.000000 |                       0/1
+                     3 |          0 : 56.000000 |          0 : 80.000000 |          0 : 35.000000 |          0 : 27.000000 |          0 : 14.000000 |                       0/1
+                     4 |          0 : 54.000000 |          0 : 53.000000 |          0 : 47.000000 |          0 : 99.000000 |          0 : 42.000000 |                       0/1
+                  Jobs |                    0/1 |                    0/1 |                    0/1 |                    0/1 |                    0/1 |
+Input what method to use for calculating min number of crossing line:
+ "0" for Greedy method ( FAST but sometimes doesn't give exact solution)
+ "1" for Brute Force method ( SLOW but gives exact solution)
+ 1
+
+
+After reducing the inital rows and columns we get:
+
+                       |                      0 |                      1 |                      2 |                      3 |                      4 |               Applicants
+                     0 |          0 : 14.000000 |          0 : 17.000000 |           0 : 0.000000 |          0 : 38.000000 |          0 : 92.000000 |                       0/1
+                     1 |           0 : 1.000000 |           0 : 1.000000 |           0 : 0.000000 |           0 : 0.000000 |           0 : 1.000000 |                       0/1
+                     2 |           0 : 0.000000 |           0 : 0.000000 |          0 : 60.000000 |          0 : 34.000000 |          0 : 59.000000 |                       0/1
+                     3 |          0 : 42.000000 |          0 : 66.000000 |          0 : 21.000000 |          0 : 12.000000 |           0 : 0.000000 |                       0/1
+                     4 |          0 : 12.000000 |          0 : 11.000000 |           0 : 5.000000 |          0 : 56.000000 |           0 : 0.000000 |                       0/1
+                  Jobs |                    0/1 |                    0/1 |                    0/1 |                    0/1 |                    0/1 |
+Iteration number 1
+Crossed Rows:1, 2,
+Crossed Columns:2, 4,
+Table is:
+
+                       |                      0 |                      1 |                      2 |                      3 |                      4 |               Applicants
+                     0 |          0 : 14.000000 |          0 : 17.000000 |         * 0 : 0.000000 |          0 : 38.000000 |        * 0 : 92.000000 |                       0/1
+                     1 |         * 0 : 1.000000 |         * 0 : 1.000000 |         * 0 : 0.000000 |         * 0 : 0.000000 |         * 0 : 1.000000 |                       0/1
+                     2 |         * 0 : 0.000000 |         * 0 : 0.000000 |        * 0 : 60.000000 |        * 0 : 34.000000 |        * 0 : 59.000000 |                       0/1
+                     3 |          0 : 42.000000 |          0 : 66.000000 |        * 0 : 21.000000 |          0 : 12.000000 |         * 0 : 0.000000 |                       0/1
+                     4 |          0 : 12.000000 |          0 : 11.000000 |         * 0 : 5.000000 |          0 : 56.000000 |         * 0 : 0.000000 |                       0/1
+                  Jobs |                    0/1 |                    0/1 |                    0/1 |                    0/1 |                    0/1 |
+
+Smallest uncovered element found at: (4, 1) with value of 11
+Optimal solution found
+Iterations terminated
+
+                       |                      0 |                      1 |                      2 |                      3 |                      4 |               Applicants
+                     0 |           0 : 3.000000 |           0 : 6.000000 |           1 : 0.000000 |          0 : 27.000000 |          0 : 92.000000 |                       1/1
+                     1 |           0 : 1.000000 |           0 : 1.000000 |          0 : 11.000000 |           1 : 0.000000 |          0 : 12.000000 |                       1/1
+                     2 |           1 : 0.000000 |           0 : 0.000000 |          0 : 71.000000 |          0 : 34.000000 |          0 : 70.000000 |                       1/1
+                     3 |          0 : 31.000000 |          0 : 55.000000 |          0 : 21.000000 |           0 : 1.000000 |           1 : 0.000000 |                       1/1
+                     4 |           0 : 1.000000 |           1 : 0.000000 |           0 : 5.000000 |          0 : 45.000000 |           0 : 0.000000 |                       1/1
+                  Jobs |                    1/1 |                    1/1 |                    1/1 |                    1/1 |                    1/1 |
+Final Optimal cost is :173
+Solution is:
+Applicant 0 Assigned to 2 Job
+Applicant 1 Assigned to 3 Job
+Applicant 2 Assigned to 0 Job
+Applicant 3 Assigned to 4 Job
+Applicant 4 Assigned to 1 Job
+

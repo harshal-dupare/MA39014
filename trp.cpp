@@ -6,6 +6,7 @@
 #include <vector>
 #include <algorithm>
 #include <fstream>
+#include "library/debug.h"
 
 using namespace std;
 typedef double R;
@@ -16,6 +17,15 @@ ll itrcount = 0;
 ll wd = 25;
 R _EPSILON = 1e-4;
 R infinity_R = 1e15;
+
+bool is_equal(R x, R y)
+{
+    if (abs(x - y) <= _EPSILON)
+    {
+        return true;
+    }
+    return false;
+}
 
 struct transport_prob
 {
@@ -30,7 +40,6 @@ struct transport_prob
     vvr x;
     R net_supply;
     R net_demand;
-    vector<pair<ll,ll>> mvps;
 
     ll problem_balanced; // +1 if supply is more than demand -1 if otherwise
 
@@ -43,7 +52,6 @@ struct transport_prob
 
     void input()
     {
-        mvps.clear();
         cout << "Number of sources: ";
         cin >> this->n;
         cout << "Number of destinations: ";
@@ -92,7 +100,6 @@ struct transport_prob
         ll cell_i = 0, cell_j = 0;
         while ((cell_i + 1ll) <= this->n && (cell_j + 1ll) <= this->m)
         {
-            this->mvps.push_back({cell_i,cell_j});
             ll ncell_i = cell_i, ncell_j = cell_j;
             R avl_supp = max(this->supply[cell_i] - this->alloc_supply[cell_i], (R)0);
             R req_dem = max(this->demand[cell_j] - this->alloc_demand[cell_j], (R)0);
@@ -171,7 +178,7 @@ struct transport_prob
             }
 
             id++;
-            this->mvps.push_back({cell_i,cell_j});
+
             this->alloc_supply[cell_i] += allotment;
             this->alloc_demand[cell_j] += allotment;
             this->x[cell_i][cell_j] += allotment;
@@ -215,20 +222,7 @@ struct transport_prob
         }
     }
 
-    bool is_pair_in(pair<ll,ll> pr)
-    {
-        for(auto p: this->mvps)
-        {
-            if(p.first==pr.first&&p.second==pr.second)
-            {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    // 0 for row 1 for column search
+    // 0 for row 1 for column
     bool find_path(vector<pair<ll, ll>> &path, ll roc, vector<vector<bool>> &onpath)
     {
         ll i = path[path.size() - 1].first, j = path[path.size() - 1].second;
@@ -247,7 +241,7 @@ struct transport_prob
                     continue;
                 }
 
-                if (this->is_pair_in({i,t}) && (!onpath[i][t]))
+                if (this->x[i][t] > (R)0 && (!onpath[i][t]))
                 {
                     path.push_back({i, t});
                     onpath[i][t] = true;
@@ -280,7 +274,7 @@ struct transport_prob
                     continue;
                 }
 
-                if (this->is_pair_in({t,j}) && (!onpath[t][j]))
+                if (this->x[t][j] > (R)0 && (!onpath[t][j]))
                 {
                     path.push_back({t, j});
                     onpath[t][j] = true;
@@ -304,7 +298,17 @@ struct transport_prob
 
     void modi_method()
     {
-        ll num_basic = this->mvps.size();
+        ll num_basic = 0;
+        for (ll i = 0; i < this->n; i++)
+        {
+            for (ll j = 0; j < this->m; j++)
+            {
+                if (this->x[i][j] > 0.0)
+                {
+                    num_basic++;
+                }
+            }
+        }
         if (num_basic != (m + n - 1))
         {
             cout << "Method cannot be applied with this initial solution as not enought basic variables\n";
@@ -316,17 +320,28 @@ struct transport_prob
         uf[0] = true;
         vr v(this->m, 0);
         vector<bool> vf(this->n, false);
-        ll itr = 0;
+        ll itr=0;
         while (true)
         {
-            cout << "||  Iteration number " << itr + 1 << "  ||\nn";
+            vector<pair<ll, ll>> vps;
             vr u(this->n, 0);
             vector<bool> uf(this->n, false);
             uf[0] = true;
             vr v(this->m, 0);
             vector<bool> vf(this->n, false);
 
-            this->solve_dual(this->mvps, u, v, uf, vf);
+            for (ll i = 0; i < this->n; i++)
+            {
+                for (ll j = 0; j < this->m; j++)
+                {
+                    if (this->x[i][j] > 0.0)
+                    {
+                        vps.push_back({i, j});
+                    }
+                }
+            }
+
+            this->solve_dual(vps, u, v, uf, vf);
             R maxv_neg = 0;
             ll cell_i = -1, cell_j = -1;
 
@@ -342,25 +357,16 @@ struct transport_prob
                     }
                 }
             }
-            cout << "Solution of Dual problem is:\n";
-            for (ll kt = 0; kt < this->n; kt++)
-            {
-                cout << "u_" << kt + 1 << " = " << u[kt] << ", ";
-            }
-            cout << endl;
-            for (ll kt = 0; kt < this->m; kt++)
-            {
-                cout << "v_" << kt + 1 << " = " << v[kt] << ", ";
-            }
-            cout << endl;
+
+            debug(u);
+            debug(v);
+            mdebug(cell_i, cell_j);
 
             if (cell_i == -1)
             {
-                cout << "No negative Cij - ui - vj found, hence itteration completed\n";
+                cout << "No negative Cij - ui-vj found, hence itteration completed\n";
                 break;
             }
-
-            cout << "Cell considered in this itteration is : [" << cell_i << ", " << cell_j << "]\n\n";
 
             vector<pair<ll, ll>> path;
             path.push_back({cell_i, cell_j});
@@ -368,43 +374,30 @@ struct transport_prob
             vector<vector<bool>> onpath(this->n, vector<bool>(this->m));
             onpath[cell_i][cell_j] = true;
 
-            bool found_path = this->find_path(path, 0, onpath);
+            bool found_path = this->find_path(path,0, onpath);
 
-            if (!found_path)
+            if(!found_path)
             {
-                cout << "Path not found\n";
+                cout<<"Path not found\n";
                 return;
             }
 
             R min_shift = infinity_R;
-            ll min_id = -1;
-            for (ll i = 1; i < path.size(); i += 2)
+            for(ll i =1;i<path.size();i+=2)
             {
-                if ( min_shift > this->x[path[i].first][path[i].second] )
-                {
-                    min_shift = this->x[path[i].first][path[i].second];
-                    min_id = i;
-                }
-            }
-
-            for(ll i = 0;i<this->mvps.size();i++)
-            {
-                if(this->mvps[i].first==path[min_id].first&&this->mvps[i].second==path[min_id].second)
-                {
-                    this->mvps[i].first = cell_i;
-                    this->mvps[i].second = cell_j;
-                }
+                min_shift = min(min_shift,this->x[path[i].first][path[i].second]);
             }
 
             ll sg = 1;
-            for (auto p : path)
+            for(auto p: path)
             {
-                this->x[p.first][p.second] += sg * min_shift;
-                sg *= (-1);
+                this->x[p.first][p.second]+=sg*min_shift;
+                sg*=(-1);
             }
 
-            cout << "After " << itr + 1 << " iteration table is:\n\n";
-            cout << (*this);
+            cout<<"After "<<itr+1<<" iteration:\n";
+            cout<<(*this);
+
         }
 
         return;
@@ -464,8 +457,8 @@ void lab_9()
     tp.input();
     cout << tp;
 
-    tp.northwest_corner();
-    // tp.lowestcost_cell();
+    // tp.northwest_corner();
+    tp.lowestcost_cell();
     cout << "After finding Basic Feasible solution we get\n";
     cout << tp;
 
@@ -478,22 +471,7 @@ void lab_9()
 
 int main()
 {
+    freopen("Lab9_Q2.txt", "r", stdin);
     lab_9();
     return 0;
 }
-
-
-/*
-
-Number of sources: 3
-Number of destinations: 4
-Enter the supply at the i'th source for next 3 lines:
- 5 2 3
-Enter the demand at the i'th destination for next 4 lines:
- 3 3 2 2
-Enter cost shipping of commodity for i'th source for next 3 lines in the format:
-c[i][0] c[i][1]... c[i][m-1]
-3 7 6 4
-2 4 3 2
-4 3 8 5
-*/

@@ -1,0 +1,85 @@
+______________________________________________________________________
+
+
+18MA20015 | Harshal Dupare | Lab 11 | 31-3-2021 |
+
+______________________________________________________________________
+
+
+Q1
+
+INPUT:
+2
+2
+5 2
+3 4
+
+OUTPUT:
+
+Enter number of strategies for row player (player A) :2
+Enter number of strategies for column player (player B) :2
+For next 2 rows enter 2 space saperated values that are payoffs in the format
+p[i][0] ...p[i][m-1]
+
+5 2
+3 4
+
+Game is not Stable
+optimal solution is a mixed Strategy,
+and value of game lies between 3 and 4
+
+Adding constant value 6 to all payoff values
+
+Converting game to LPP problem
+ ||   Standard Format of Problem is  ||
+[ 11 8 1 0  | 1 ]
+[ 9 10 0 1  | 1 ]
+Solving game using simplex method
+Initial Simplex table:
+      Basic         z       x_1       x_2       s_1       s_2 Solution
+         z         1        -1        -1         0         0         0
+       s_1         0        11         8         1         0         1
+       s_2         0         9        10         0         1         1
+Entering Variable at 1 iteration is x_1
+Leaving Variable at 1 iteration is s_1
+
+After 1th interation the table is:
+     Basic         z       x_1       x_2       s_1       s_2 Solution
+         z         1         0 -0.272727 0.0909091         0 0.0909091
+       x_1         0         1  0.727273 0.0909091         0 0.0909091
+       s_2         0         0   3.45455 -0.818182         1  0.181818
+Non Basic Variables Are :x_1, s_2,
+Basic Variables Are :x_2, s_1,
+
+Entering Variable at 2 iteration is x_2
+Leaving Variable at 2 iteration is s_2
+
+After 2th interation the table is:
+     Basic         z       x_1       x_2       s_1       s_2 Solution
+         z         1         0         0 0.0263158 0.0789474  0.105263
+       x_1         0         1         0  0.263158 -0.210526 0.0526316
+       x_2         0         0         1 -0.236842  0.289474 0.0526316
+Non Basic Variables Are :x_1, x_2,
+Basic Variables Are :s_1, s_2,
+
+Coudn't find entering variable, Simplex iteration completed
+
+     Basic         z       x_1       x_2       s_1       s_2 Solution
+         z         1         0         0 0.0263158 0.0789474  0.105263
+       x_1         0         1         0  0.263158 -0.210526 0.0526316
+       x_2         0         0         1 -0.236842  0.289474 0.0526316
+Final solution is:
+z=0.105263
+x_1=0.0526316
+x_2=0.0526316
+s_1=0
+s_2=0
+
+
+Solution of the game is
+
+Optimal mixed strategy for player A:
+p_1 = 0.25, p_2 = 0.75,
+Optimal mixed strategy for player B:
+p_1 = 0.5, p_2 = 0.5,
+Value of game is: 3.5

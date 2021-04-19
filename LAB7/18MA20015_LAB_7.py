@@ -221,7 +221,7 @@ class Revised_Simplex:
 
 RS = Revised_Simplex()
 
-RS.run('test2.txt') # uncomment for problem A 
+RS.run('A.txt') # uncomment for problem A 
 
 # RS.run('B.txt') # uncomment for problem B
 

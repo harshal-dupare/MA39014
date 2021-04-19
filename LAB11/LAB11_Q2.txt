@@ -1,0 +1,109 @@
+______________________________________________________________________
+
+
+18MA20015 | Harshal Dupare | Lab 11 | 31-3-2021 |
+
+______________________________________________________________________
+
+Q2
+
+INPUT:
+2
+4
+-2 3 5 2
+5 -1 -2 0
+
+
+OUTPUT:
+
+Enter number of strategies for row player (player A) :2
+Enter number of strategies for column player (player B) :4
+For next 2 rows enter 4 space saperated values that are payoffs in the format
+p[i][0] ...p[i][m-1]
+
+-2 3 5 2
+5 -1 -2 0
+
+Game is not Stable
+optimal solution is a mixed Strategy,
+and value of game lies between -2 and 2
+
+Adding constant value 4 to all payoff values
+
+Converting game to LPP problem
+ ||   Standard Format of Problem is  ||
+[ 2 7 9 6 1 0  | 1 ]
+[ 9 3 2 4 0 1  | 1 ]
+Solving game using simplex method
+Initial Simplex table:
+      Basic         z       x_1       x_2       x_3       x_4       s_1       s_2 Solution
+         z         1        -1        -1        -1        -1         0         0         0
+       s_1         0         2         7         9         6         1         0         1
+       s_2         0         9         3         2         4         0         1         1
+Entering Variable at 1 iteration is x_1
+Leaving Variable at 1 iteration is s_2
+
+After 1th interation the table is:
+     Basic         z       x_1       x_2       x_3       x_4       s_1       s_2 Solution
+         z         1         0 -0.666667 -0.777778 -0.555556         0  0.111111  0.111111
+       s_1         0         0   6.33333   8.55556   5.11111         1 -0.222222  0.777778
+       x_1         0         1  0.333333  0.222222  0.444444         0  0.111111  0.111111
+Non Basic Variables Are :x_1, s_1,
+Basic Variables Are :x_2, x_3, x_4, s_2,
+
+Entering Variable at 2 iteration is x_3
+Leaving Variable at 2 iteration is s_1
+
+After 2th interation the table is:
+     Basic         z       x_1       x_2       x_3       x_4       s_1       s_2 Solution
+         z         1         0-0.0909091         0-0.0909091 0.0909091 0.0909091  0.181818
+       x_3         0         0   0.74026         1  0.597403  0.116883 -0.025974 0.0909091
+       x_1         0         1  0.168831         0  0.311688 -0.025974  0.116883 0.0909091
+Non Basic Variables Are :x_1, x_3,
+Basic Variables Are :x_2, x_4, s_1, s_2,
+
+Entering Variable at 3 iteration is x_2
+Leaving Variable at 3 iteration is x_3
+
+After 3th interation the table is:
+     Basic         z       x_1       x_2       x_3       x_4       s_1       s_2 Solution
+         z         1         0         0  0.122807-0.0175439  0.105263 0.0877193  0.192982
+       x_2         0         0         1   1.35088  0.807018  0.157895-0.0350877  0.122807
+       x_1         0         1         0  -0.22807  0.175439-0.0526316  0.122807 0.0701754
+Non Basic Variables Are :x_1, x_2,
+Basic Variables Are :x_3, x_4, s_1, s_2,
+
+Entering Variable at 4 iteration is x_4
+Leaving Variable at 4 iteration is x_2
+
+After 4th interation the table is:
+     Basic         z       x_1       x_2       x_3       x_4       s_1       s_2 Solution
+         z         1         0 0.0217391  0.152174         0  0.108696 0.0869565  0.195652
+       x_4         0         0   1.23913   1.67391         1  0.195652-0.0434783  0.152174
+       x_1         0         1 -0.217391 -0.521739         0-0.0869565  0.130435 0.0434783
+Non Basic Variables Are :x_1, x_4,
+Basic Variables Are :x_2, x_3, s_1, s_2,
+
+Coudn't find entering variable, Simplex iteration completed
+
+     Basic         z       x_1       x_2       x_3       x_4       s_1       s_2 Solution
+         z         1         0 0.0217391  0.152174         0  0.108696 0.0869565  0.195652
+       x_4         0         0   1.23913   1.67391         1  0.195652-0.0434783  0.152174
+       x_1         0         1 -0.217391 -0.521739         0-0.0869565  0.130435 0.0434783
+Final solution is:
+z=0.195652
+x_1=0.0434783
+x_2=0
+x_3=0
+x_4=0.152174
+s_1=0
+s_2=0
+
+
+Solution of the game is
+
+Optimal mixed strategy for player A:
+p_1 = 0.555556, p_2 = 0.444444,
+Optimal mixed strategy for player B:
+p_1 = 0.222222, p_2 = 0, p_3 = 0, p_4 = 0.777778,
+Value of game is: 1.11111
